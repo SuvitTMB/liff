@@ -75,6 +75,7 @@
     }
 
     function getEnvironment() {
+      document.getEnvironmentById("os").appen(liff.getOS())
       /*
       document.getEnvironmentById("os").appen(liff.getOS())
       document.getEnvironmentById("language").appen(liff.getLanguage())
@@ -94,7 +95,7 @@
     async function main() {
       //alert("LINE Developers x Skooldio")
       await liff.init({ liffId: "1655869884-5k4ebZo1" })
-      //getEnvironment()
+      getEnvironment()
       // getUserProfile()
       // getContext()
       // getFriendship()
