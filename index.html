@@ -75,6 +75,7 @@
     }
 
     function getEnvironment() {
+      /*
       document.getEnvironmentById("os").appen(liff.getOS())
       document.getEnvironmentById("language").appen(liff.getLanguage())
       document.getEnvironmentById("version").appen(liff.getVersion())
@@ -87,12 +88,13 @@
         document.getEnvironmentById("btnScanCode").style.display = "none"
         document.getEnvironmentById("btnClose").style.display = "none"
       }
+      */
     }
 
     async function main() {
       //alert("LINE Developers x Skooldio")
       await liff.init({ liffId: "1655869884-5k4ebZo1" })
-      getEnvironment()
+      //getEnvironment()
       // getUserProfile()
       // getContext()
       // getFriendship()
