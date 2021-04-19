@@ -71,6 +71,13 @@
     }
 
     function getContext() {
+      //ค่าที่บอกว่าเราสนทนาตัวต่อตัวอย่าง
+      document.getElementById("type").append(liff.getContext().type)
+      document.getElementById("viewType").append(liff.getContext().viewType)
+      document.getElementById("utouId").append(liff.getContext().utouId)
+      document.getElementById("roomId").append(liff.getContext().roomId)
+      document.getElementById("groupId").append(liff.getContext().groupId)
+
     }
 
     async function getUserProfile() {
@@ -94,22 +101,7 @@
         document.getElementById("btnMsg").style.display = "none"
         document.getElementById("btnScanCode").style.display = "none"
         document.getElementById("btnClose").style.display = "none"
-
       }
-      /*
-      document.getEnvironmentById("os").appen(liff.getOS())
-      document.getEnvironmentById("language").appen(liff.getLanguage())
-      document.getEnvironmentById("version").appen(liff.getVersion())
-      document.getEnvironmentById("accessToken").appen(liff.getAccessToken())
-      document.getEnvironmentById("isInClient").appen(liff.isInClient())
-      if (liff.isInClient()) {
-        document.getEnvironmentById("btnLogOut").style.display="none"
-      } else {
-        document.getEnvironmentById("btnMsg").style.display = "none"
-        document.getEnvironmentById("btnScanCode").style.display = "none"
-        document.getEnvironmentById("btnClose").style.display = "none"
-      }
-      */
     }
 
     async function main() {
@@ -117,7 +109,7 @@
       await liff.init({ liffId: "1655869884-5k4ebZo1" })
       getEnvironment()
       getUserProfile()
-      // getContext()
+      getContext()
       // getFriendship()
       // createUniversalLink()
     }
