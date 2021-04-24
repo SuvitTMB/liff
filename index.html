@@ -62,12 +62,14 @@
     }
 
     function openWindow() {
+      alert("Open Windows")
       liff.openWindow({
         url: "https://line.me",
         external = true
       })
     }
 
+/*
     async function getFriendship() {
       const friend = await liff.getFriendship()
       document.getElementById("friendship").append(friend.friendFlag)
@@ -77,7 +79,7 @@
         }
       }
     }
-
+*/
     async function sendMsg() {
       alert("Check Message")
       if (liff.getContext().type !== "none" && liff.getContext().type !== "external") {
