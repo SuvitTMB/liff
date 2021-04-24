@@ -50,10 +50,12 @@
     }
 
     async function shareMsg() {
-      await liff.shareTargetPicker({
-        "type": "text",
-        "text": "This message was sent by shareTargetPicker"
-      })
+      await liff.shareTargetPicker([
+        {
+          "type": "text",
+          "text": "ทดสอบการส่งข้อมูลจากโปรแกรม"
+        }
+      ])
     }
 
     function logOut() {
