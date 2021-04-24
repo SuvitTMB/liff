@@ -59,6 +59,7 @@
     }
 
     async function scanCode() {
+      alert("Scan QRCode")
       const result = await liff.scanCode()
       document.getElementById("scanCode").append(result.value)
     }
