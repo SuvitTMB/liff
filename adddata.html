@@ -50,7 +50,7 @@
 	ReadData();
 	function ReadData() {
 		db.orderBy("Firstname").onSnapshot(function(spapshot){
-			spapshot.docChange().forEach(function(change) {
+			spapshot.docChange().forEach(function(change){
 				if(change.type === "added") {
 					ShowData(change.doc);
 				}
@@ -59,10 +59,12 @@
 				}
 				if(change.type === "removed") {
 					ShowData(change.doc);
-				}
+				}				
 			});
 		});
 	}
+
+
 
 	function ShowData(doc) {
 		var ul = document.getElementById("show");
