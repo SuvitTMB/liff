@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+
+</head>
+
+<body>
+
+<!-- The core Firebase JS SDK is always required and must be listed first -->
+<script src="https://www.gstatic.com/firebasejs/8.5.0/firebase-app.js"></script>
+<script src="https://www.gstatic.com/firebasejs/8.5.0/firebase-firestore.js"></script>
+<script type="text/javascript">
+	const firebaseConfig = {
+	  apiKey: "AIzaSyDfTJJ425U4OY0xac6jdhtSxDeuJ-OF-lE",
+	  authDomain: "retailproject-6f4fc.firebaseapp.com",
+	  projectId: "retailproject-6f4fc",
+	  storageBucket: "retailproject-6f4fc.appspot.com",
+	  messagingSenderId: "653667385625",
+	  appId: "1:653667385625:web:a5aed08500de80839f0588",
+	  measurementId: "G-9SKTRHHSW9"
+	};
+	firebase.initalizeApp(firebaseConfig);
+	var db=firebase.firestore().collection("personal")
+
+	AddData("steven","wonder",66);
+	function AddData(Fname,Lname,Age) {
+		db.add({
+			Firstname : Fname,
+			Lastname : Lname,
+			Age: Age
+		});
+
+	}
+
+</script>
+
+
+</body>
+</html>
