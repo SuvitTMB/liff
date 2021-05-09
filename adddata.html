@@ -34,8 +34,8 @@
 
 	firebase.initializeApp(firebaseConfig);
 	//firebase.analytics();
-
-	const db=firebase.firestore().collection("personal")
+	var db=firebase.firestore().collection("personal")
+	ReadData();
 
 	//AddData("steven","wonder",66);
 	function AddData(Fname,Lname,Age) {
@@ -47,7 +47,6 @@
 		alert("Save");
 	}
 
-	ReadData();
 	function ReadData() {
 		db.orderBy("Firstname").onSnapshot(function(snapshot){
 			snapshot.docChanges().forEach(function(change){
@@ -76,7 +75,6 @@
 		node.appendChild(t1);
 		node.appendChild(t2);
 		node.appendChild(t3);
-
 		ul.appendChild(node);
 	}
 
