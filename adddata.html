@@ -23,10 +23,10 @@
 	  measurementId: "G-9SKTRHHSW9"
 	};
 
-
-
 	firebase.initializeApp(firebaseConfig);
-	var db=firebase.firestore().collection("personal")
+	firebase.analytics();
+
+	const db=firebase.firestore().collection("personal")
 
 	AddData("steven","wonder",66);
 	function AddData(Fname,Lname,Age) {
