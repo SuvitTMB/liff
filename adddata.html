@@ -8,6 +8,13 @@
 
 <body>
 
+	<div>First Name : <input type="text" id="txtFirstName"></div>
+	<div>Last Name : <input type="text" id="txtLastName"></div>
+	<div>Age : <input type="text" id="txtAde"></div>
+	<div><button onclick="AddDtaa(document.getElementByid('txtFirstName').value,document.getElementByid('txtLastName').value,document.getElementByid('txtAge').value)">Add Data</button></div>
+
+
+
 <!-- The core Firebase JS SDK is always required and must be listed first -->
 <script src="https://www.gstatic.com/firebasejs/8.5.0/firebase-app.js"></script>
 <script src="https://www.gstatic.com/firebasejs/8.5.0/firebase-firestore.js"></script>
@@ -28,7 +35,7 @@
 
 	const db=firebase.firestore().collection("personal")
 
-	AddData("steven","wonder",66);
+	//AddData("steven","wonder",66);
 	function AddData(Fname,Lname,Age) {
 		db.add({
 			Firstname : Fname,
