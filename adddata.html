@@ -49,8 +49,8 @@
 
 	ReadData();
 	function ReadData() {
-		db.orderBy("Firstname").onSnapshot(function(spapshot){
-			spapshot.docChange().forEach(function(change){
+		db.orderBy("Firstname").onSnapshot(function(snspshot){
+			snspshot.docChange().forEach(function(change){
 				if(change.type === "added") {
 					ShowData(change.doc);
 				}
