@@ -11,7 +11,7 @@
 	<div>First Name : <input type="text" id="txtFirstName"></div>
 	<div>Last Name : <input type="text" id="txtLastName"></div>
 	<div>Age : <input type="text" id="txtAde"></div>
-	<div><button onclick="AddDtaa(document.getElementById('txtFirstName').value,document.getElementById('txtLastName').value,document.getElementById('txtAge').value)">Add Data</button></div>
+	<div><button onclick="AddData(document.getElementById('txtFirstName').value,document.getElementById('txtLastName').value,document.getElementById('txtAge').value)">Add Data</button></div>
 
 
 
@@ -31,7 +31,7 @@
 	};
 
 	firebase.initializeApp(firebaseConfig);
-	firebase.analytics();
+	//firebase.analytics();
 
 	const db=firebase.firestore().collection("personal")
 
