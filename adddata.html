@@ -11,7 +11,7 @@
 	<div>First Name : <input type="text" id="txtFirstName"></div>
 	<div>Last Name : <input type="text" id="txtLastName"></div>
 	<div>Age : <input type="text" id="txtAge"></div>
-	<div><button onclick="AddData(document.getElementById('txtFirstName').value,document.getElementById('txtLastName').value,document.getElementById('txtAge').value)">Add Data</button></div>
+	<div><button onclick="AddData(document.getElementById('txtFirstName').value,document.getElementById('txtLastName').value,document.getElementById('txtAge').value)">Save</button></div>
 
 	<div>
 		<ul id="show"></ul>
@@ -35,6 +35,7 @@
 	firebase.initializeApp(firebaseConfig);
 	//firebase.analytics();
 	var db=firebase.firestore().collection("personal")
+	Eid = "";
 	ReadData();
 
 
@@ -45,7 +46,7 @@
 					ShowData(change.doc);
 				}
 				if(change.type === "modified") {
-					//ShowData(change.doc);
+					UpdateData(change.doc);
 				}
 				if(change.type === "removed") {
 					var node = document.getElementById("L_"+change.doc.id);
@@ -69,6 +70,7 @@
 		node.appendChild(t2);
 		node.appendChild(t3);
 
+		//delete
 		var b = document.createElement("BUTTON");
 		b.innerHTML = "deleted";
 		b.addEventListener("click",function(){
@@ -76,18 +78,83 @@
 		});
 		node.appendChild(b);
 
+		//edit
+		var b2 = document.createElement("BUTTON");
+		b2.innerHTML = "edit";
+		b2.addEventListener("click",function(){
+			EditData(
+				doc.id,
+				doc.data().Firstname,
+				doc.data().Lastname,
+				doc.data().Age
+			);
+		});
+		node.appendChild(b2);
 		ul.appendChild(node);
 	}
 
 
+	function UpdateData(doc) {
+		var node = document.getElementById("L_" + doc.id);
+		node.innerHTML = "";
+		var t1 = document.createTextNode(doc.data().Firstname + " | ");
+		var t2 = document.createTextNode(doc.data().Lastname + " | ");
+		var t3 = document.createTextNode(doc.data().Age);
+		node.appendChild(t1);
+		node.appendChild(t2);
+		node.appendChild(t3);
+
+		//delete
+		var b = document.createElement("BUTTON");
+		b.innerHTML = "deleted";
+		b.addEventListener("click",function(){
+			RemoveData(doc.id);
+		});
+		node.appendChild(b);
+
+		//edit
+		var b2 = document.createElement("BUTTON");
+		b2.innerHTML = "edit";
+		b2.addEventListener("click",function(){
+			EditData(
+				doc.id,
+				doc.data().Firstname,
+				doc.data().Lastname,
+				doc.data().Age
+			);
+		});
+		node.appendChild(b2);
+		//ul.appendChild(node);
+	}
+
+
+
+
+
+
 	//AddData("steven","wonder",66);
 	function AddData(Fname,Lname,Age) {
-		db.add({
-			Firstname : Fname,
-			Lastname : Lname,
-			Age: Age
-		});
-		alert("Save");
+		if (Eid == "") {
+			if(Fname!="" && Lname!="" && Age!="") {
+				db.add({
+					Firstname : Fname,
+					Lastname : Lname,
+					Age : Age
+				});				
+			} else {
+				alert("Please add First Name bofore Save");
+			}
+		} else {
+			db.doc(Eid).update({
+				Firstname : Fname,
+				Lastname : Lname,
+				Age : Age				
+			});
+			Eid = "";
+			document.getElementById("txtFirstName").value = "";
+			document.getElementById("txtLastName").value = "";
+			document.getElementById("txtAge").value = "";		}
+
 	}
 
 	function RemoveData(id) {
@@ -95,6 +162,13 @@
 	}
 
 
+	function EditData(id,Fname,Lname,Age) {
+		Eid = id;
+		document.getElementById("txtFirstName").value = Fname;
+		document.getElementById("txtLastName").value = Lname;
+		document.getElementById("txtAge").value = Age;
+
+	}
 
 
 
