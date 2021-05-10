@@ -1,8 +1,18 @@
 
 
+
+
 $(document).ready(function () {
-	main()
+  document.getElementById('CheckLogin').style.display='block';
+  document.getElementById('CheckProfile').style.display='none';
+  main()
 });
+
+
+function ClickCheckLogin() {
+  document.getElementById('CheckLogin').style.display='none';
+  document.getElementById('CheckProfile').style.display='block';
+}
 
 
 
