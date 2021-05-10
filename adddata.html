@@ -64,7 +64,7 @@
 		var t2 = document.createTextNode(doc.data().Lastname + " | ");
 		var t3 = document.createTextNode(doc.data().Age);
 		node.appendChild(t1);
-		node.appendChild(t2);g
+		node.appendChild(t2);
 		node.appendChild(t3);
 
 		var b = document.createElement("BUTTON");
@@ -73,8 +73,6 @@
 			RemoveData(doc.id);
 		});
 		node.appendChild(b);
-
-
 
 		ul.appendChild(node);
 	}
