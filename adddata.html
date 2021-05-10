@@ -36,9 +36,9 @@
 </head>
 
 <body style="background-color: #0056ff;margin: 0;" >
+  <!--
   <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-PW7HPDW"
   height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
-  <!--
   <div class="navbar">
     <div>
       <a href="#" class="active">ttb bank</a>
@@ -145,7 +145,6 @@
 
 
     async function main() {
-      //alert("LINE Developers x Skooldio")
       await liff.init({ liffId: "1655966947-5rJYErwX" })
       document.getElementById("isLoggedIn").append(liff.isLoggedIn())
       if(liff.isLoggedIn()) {
@@ -162,7 +161,7 @@
       document.getElementById("pictureUrl").src = profile.pictureUrl
       document.getElementById("userId").append(profile.userId)
       document.getElementById("displayName").append(profile.displayName)
-      //document.getElementById("statusMessage").append(profile.statusMessage)
+      document.getElementById("statusMessage").append(profile.statusMessage)
       //document.getElementById("decodedIDToken").append(liff.getDecodedIDToken().email)
     }
 
@@ -190,17 +189,7 @@
     }
 
 
-    async function main() {
-      //alert("LINE Developers x Skooldio")
-      await liff.init({ liffId: "1655966947-5rJYErwX" })
-      document.getElementById("isLoggedIn").append(liff.isLoggedIn())
-      if(liff.isLoggedIn()) {
-        getUserProfile()
-      } else {
-        liff.login()
-      }
-    }
-    main()
+
 
 
 </script>
