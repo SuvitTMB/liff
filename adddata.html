@@ -8,6 +8,14 @@
 
 <body>
 
+  <p id="isLoggedIn"><b>isLoggedIn:</b> </p>
+  <img id="pictureUrl">
+  <p id="userId"><b>userId:</b> </p>
+  <p id="displayName"><b>displayName:</b> </p>
+  <p id="statusMessage"><b>statusMessage:</b> </p>
+
+
+
 	<div>First Name : <input type="text" id="txtFirstName"></div>
 	<div>Last Name : <input type="text" id="txtLastName"></div>
 	<div>Age : <input type="text" id="txtAge"></div>
@@ -18,6 +26,7 @@
 	</div>
 
 <!-- The core Firebase JS SDK is always required and must be listed first -->
+<script src="https://static.line-scdn.net/liff/edge/versions/2.8.1/sdk.js"></script>
 <script src="https://www.gstatic.com/firebasejs/8.5.0/firebase-app.js"></script>
 <script src="https://www.gstatic.com/firebasejs/8.5.0/firebase-firestore.js"></script>
 
@@ -37,6 +46,52 @@
 	var db=firebase.firestore().collection("personal")
 	Eid = "";
 	ReadData();
+
+
+    async function main() {
+      //alert("LINE Developers x Skooldio")
+      await liff.init({ liffId: "1655966947-5rJYErwX" })
+      document.getElementById("isLoggedIn").append(liff.isLoggedIn())
+      if(liff.isLoggedIn()) {
+        getUserProfile()
+      } else {
+        liff.login()
+      }
+    }
+    main()
+
+
+    async function getUserProfile() {
+      const profile = await liff.getProfile()
+      document.getElementById("pictureUrl").src = profile.pictureUrl
+      document.getElementById("userId").append(profile.userId)
+      document.getElementById("displayName").append(profile.displayName)
+      document.getElementById("statusMessage").append(profile.statusMessage)
+      document.getElementById("decodedIDToken").append(liff.getDecodedIDToken().email)
+    }
+
+
+    function logOut() {
+      liff.logout()
+      window.location.reload()
+    }
+
+    function closed() {
+      liff.closeWindow()
+    }
+
+    async function scanCode() {
+      alert("Scan QRCode")
+      const result = await liff.scanCode()
+      document.getElementById("scanCode").append(result.value)
+    }
+
+    function openWindow() {
+      liff.openWindow({
+        url: "https://line.me",
+        external: true     
+      })
+    }
 
 
 	function ReadData() {
