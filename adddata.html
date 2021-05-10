@@ -37,15 +37,6 @@
 	var db=firebase.firestore().collection("personal")
 	ReadData();
 
-	//AddData("steven","wonder",66);
-	function AddData(Fname,Lname,Age) {
-		db.add({
-			Firstname : Fname,
-			Lastname : Lname,
-			Age: Age
-		});
-		alert("Save");
-	}
 
 	function ReadData() {
 		db.orderBy("Firstname").onSnapshot(function(snapshot){
@@ -69,14 +60,41 @@
 		var ul = document.getElementById("show");
 		var node = document.createElement("LI");
 		node.id = "L_"+doc.id;
-		var t1 = document.createTextNode(doc.data().Firstname);
-		var t2 = document.createTextNode(doc.data().Lastname);
+		var t1 = document.createTextNode(doc.data().Firstname + " | ");
+		var t2 = document.createTextNode(doc.data().Lastname + " | ");
 		var t3 = document.createTextNode(doc.data().Age);
 		node.appendChild(t1);
-		node.appendChild(t2);
+		node.appendChild(t2);g
 		node.appendChild(t3);
+
+		var b = document.createElement("BUTTON");
+		b.innerHTML = "deleted";
+		b.addEventListener("click",function(){
+			RemoveData(doc.id);
+		});
+		node.appendChild(b);
+
+
+
 		ul.appendChild(node);
 	}
+
+
+	//AddData("steven","wonder",66);
+	function AddData(Fname,Lname,Age) {
+		db.add({
+			Firstname : Fname,
+			Lastname : Lname,
+			Age: Age
+		});
+		alert("Save");
+	}
+
+	function RemoveData() {
+		db.doc(id).delete();
+	}
+
+
 
 
 
