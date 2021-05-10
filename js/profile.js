@@ -15,7 +15,7 @@ function ClickCheckLogin() {
 }
 
 
-
+/*
 async function main() {
   //alert("LINE Developers x Skooldio")
   await liff.init({ liffId: "1655966947-5rJYErwX" })
@@ -53,3 +53,4 @@ function openWindow() {
   })
 }
 
+*/
