@@ -14,14 +14,14 @@
 	<div><button onclick="AddData(document.getElementById('txtFirstName').value,document.getElementById('txtLastName').value,document.getElementById('txtAge').value)">Add Data</button></div>
 
 	<div>
-		<ul></ul>
+		<ul id="show"></ul>
 	</div>
 
 <!-- The core Firebase JS SDK is always required and must be listed first -->
 <script src="https://www.gstatic.com/firebasejs/8.5.0/firebase-app.js"></script>
 <script src="https://www.gstatic.com/firebasejs/8.5.0/firebase-firestore.js"></script>
-<script type="text/javascript">
 
+<script type="text/javascript">
 	var firebaseConfig = {
 	  apiKey: "AIzaSyDfTJJ425U4OY0xac6jdhtSxDeuJ-OF-lE",
 	  authDomain: "retailproject-6f4fc.firebaseapp.com",
@@ -77,6 +77,8 @@
 		node.appendChild(t3);
 		ul.appendChild(node);
 	}
+
+
 
 </script>
 
