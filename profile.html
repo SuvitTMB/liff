@@ -75,6 +75,7 @@
           <div style="color:#ffffff;font-size:18px;margin-top:-20px;">LINE Retail Society</div>
           <div style="padding:15px 0px 15px 0px;">
             <center>
+              <p id="isLoggedIn"><b>isLoggedIn:</b> </p>
             <div style="padding:10px;"><img id="pictureUrl" class="imgprofile"></div>
             <div style="color:#ffff00;font-size:16px;">website</div>
             <div class="btn-t2" onclick="ClickCheckLogin()">กรุณาตรวจสอบข้อมูลของท่าน</div>
@@ -149,8 +150,7 @@
   firebase.initializeApp(firebaseConfig);
   //firebase.analytics();
   var db=firebase.firestore().collection("personal")
-  Eid = "";
-  ReadData();
+
 
 
     async function main() {
