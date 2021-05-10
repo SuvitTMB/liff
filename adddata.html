@@ -48,6 +48,8 @@
 					//ShowData(change.doc);
 				}
 				if(change.type === "removed") {
+					var node = document.getElementById("L_"+change.doc.id);
+					node.parentNode.removeChild(node);
 					//ShowData(change.doc);
 				}				
 			});
