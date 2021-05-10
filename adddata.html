@@ -2,56 +2,155 @@
 <html lang="en">
 
 <head>
-  <title>Firebase</title>
   <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta content="width=device-width, initial-scale=1.0" name="viewport">
+  <!-- Google Tag Manager -->
+  <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+  new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+  j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+  'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+  })(window,document,'script','dataLayer','GTM-PW7HPDW');</script>
+  <!-- End Google Tag Manager -->
+  <title>LINE Retail Society</title>
+  <meta content="" name="description">
+  <meta content="" name="keywords">
+
+  <!-- Favicons -->
+  <link href="assets/img/favicon.ico" rel="icon">
+  <link href="assets/img/apple-touch-icon.png" rel="apple-touch-icon">
+
+  <!-- Vendor CSS Files -->
+  <link href="assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+  <link href="assets/vendor/icofont/icofont.min.css" rel="stylesheet">
+  <link href="assets/vendor/boxicons/css/boxicons.min.css" rel="stylesheet">
+  <link href="assets/vendor/animate.css/animate.min.css" rel="stylesheet">
+  <link href="assets/vendor/venobox/venobox.css" rel="stylesheet">
+  <link href="assets/vendor/owl.carousel/assets/owl.carousel.min.css" rel="stylesheet">
+  <link href="assets/vendor/aos/aos.css" rel="stylesheet">
+
+  <!-- Template Main CSS File -->
   <link rel="stylesheet" type="text/css" href="css/ekachon.css">
-  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+  <link rel="stylesheet" type="text/css" href="css/button.css">
+  <link rel="stylesheet" type="text/css" href="css/app.css">
+  <link href="assets/css/style.css" rel="stylesheet">
 </head>
 
-<body>
+<body style="background-color: #0056ff;margin: 0;" >
+  <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-PW7HPDW"
+  height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+  <!--
+  <div class="navbar">
+    <div>
+      <a href="#" class="active">ttb bank</a>
+      <a href="mockrun.html">Mock Run</a>
+      <a href="activity.html">กิจกรรม</a>
+      <a href="carepack.html">Care Pack</a>
+    </div>
+  </div>
+  -->
+  <div class="main">
+  <header id="header">
+    <div class="container d-flex">
+      <div class="logo mr-auto">
+        <h4 class="text-light" style="padding-top:8px;"><a href="index.html"><font color="#0056ff"><font color="#009966">LINE</font> <font color="#666666">Retail</font> <font color="#0056ff">So</font><font color="#f68b1f">ciety</font></a></h4>
+      </div>
+      <!--
+      <nav class="nav-menu d-none d-lg-block">
+        <ul>
+          <li class="active"><a href="index.html">Home</a></li>
+          <li><a href="mockrun.html">Mock Run</a></li>
+          <li><a href="activity.html">กิจกรรม</a></li>
+          <li><a href="carepack.html">Care Pack</a></li>
+        </ul>
+      </nav>
+      -->
+    </div>
+  </header>
 
-  <p id="isLoggedIn"><b>isLoggedIn:</b> </p>
-  <img id="pictureUrl" style="width:90px;">
-  <p id="userId"><b>userId:</b> </p>
-  <p id="displayName"><b>displayName:</b> </p>
-  <p id="statusMessage"><b>statusMessage:</b> </p>
-	<p><a href="profile.html">Link Profile</a></p>
+
+  <main id="main">
+    <section id="team" class="team section-bg" style="background-color: #0056ff;min-height:450px;">
+      <div class="container" id="CheckLogin">
+        <div class="section-title" data-aos="fade-up" style="margin-top:10px;">
+          <div style="color:#ffffff;font-size:18px;margin-top:-20px;">LINE Retail Society</div>
+          <div style="padding:15px 0px 15px 0px;">
+            <center>
+              <p id="isLoggedIn"><b>isLoggedIn:</b> </p>
+            <div style="padding:10px;"><img id="pictureUrl" class="imgprofile"></div>
+            <div style="color:#ffff00;font-size:16px;" id="displayName"></div>
+            <div class="btn-t2" onclick="ClickCheckLogin()">กรุณาตรวจสอบข้อมูลของท่าน</div>
+            <div style="padding-top:25px;color:#ffffff;">ขอความร่วมมือในการตรวจสอบความถูกต้อง<br>ของข้อมูลของท่านในการเข้าใช้งาน LINE Retail Society</div>
+            </center>
+          </div>
+        </div>
+      </div>
+
+      <div class="container" id="CheckProfile">
+        <div class="section-title" data-aos="fade-up" style="margin-top:-10px;color:#ffffff;">
+          <center>
+          <div style="font-size: 15px;">ตรวจสอบข้อมูลของคุณ</div>
+          <div style="padding:10px;"><img src="./assets/img/id08400.jpg" class="imgprofile-s"></div>
+          <div style="color:#ffff00;font-size:16px;">website</div>
+          </center>
+          <div style="color:#ccc;text-align: left;padding:5px 30px;margin-top:15px;font-size:13px;">
+            <div>ชื่อ-นามสกุล (ภาษาไทย) *</div>
+            <div><input type="text" id="fname" name="firstname" placeholder="ชื่อ นามสกุล .." disabled></div>
+            <div>รหัสพนักงาน (ttb bank) *</div>
+            <div><input type="text" id="empid" name="empid" placeholder="รหัสพนักงาน (ttb bank) .." disabled></div>
+            <div>Email (ttb bank)</div>
+            <div><input type="text" id="email" name="email" placeholder="Email (ttb bank) .."></div>
+            <div>โทรศัพท์มือถือ</div>
+            <div><input type="text" id="mobile" name="mobile" placeholder="โทรศัพท์มือถือ .."></div>
+            <div>หน่วยงาน (สาขา + รหัสสาขา)</div>
+            <div><input type="text" id="department" name="department" placeholder="หน่วยงาน (สาขา + รหัสสาขา) .."></div>
+            <div>ที่จัดส่งของรางวัล (ที่ตั้งสาขา)</div>
+            <div><textarea id="address" name="address" placeholder="ที่จัดส่งของรางวัล .." style="height:100px"></textarea></div>
+            <center><div class="btn-t2" onclick="ClickSaveProfile()">บันทึกรายการ</div></center>
+          </div>
+        </div>
+      </div>
 
 
+    </section>
+  </main>
+  </div>
+  <a href="activity.html">Link</a>
+  <a href="#" class="back-to-top"><i class="icofont-simple-up"></i></a>
 
-	<div>First Name : <input type="text" id="txtFirstName"></div>
-	<div>Last Name : <input type="text" id="txtLastName"></div>
-	<div>Age : <input type="text" id="txtAge"></div>
-	<div><button onclick="AddData(document.getElementById('txtFirstName').value,document.getElementById('txtLastName').value,document.getElementById('txtAge').value)">Save</button></div>
+  <!-- Vendor JS Files -->
+  <script src="https://static.line-scdn.net/liff/edge/versions/2.8.1/sdk.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/8.5.0/firebase-app.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/8.5.0/firebase-firestore.js"></script>
+  <script src="assets/vendor/jquery/jquery.min.js"></script>
+  <script src="assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+  <script src="assets/vendor/jquery.easing/jquery.easing.min.js"></script>
+  <script src="assets/vendor/jquery-sticky/jquery.sticky.js"></script>
+  <script src="assets/vendor/isotope-layout/isotope.pkgd.min.js"></script>
+  <script src="assets/vendor/venobox/venobox.min.js"></script>
+  <script src="assets/vendor/waypoints/jquery.waypoints.min.js"></script>
+  <script src="assets/vendor/owl.carousel/owl.carousel.min.js"></script>
+  <script src="assets/vendor/aos/aos.js"></script>
+  <script src="assets/js/main.js"></script>
 
-	<div>
-		<ul id="show"></ul>
-	</div>
+  <!-- Template Main JS File 
+  <script src="js/config.js"></script>-->
 
-<!-- The core Firebase JS SDK is always required and must be listed first -->
-<script src="https://static.line-scdn.net/liff/edge/versions/2.8.1/sdk.js"></script>
-<script src="https://www.gstatic.com/firebasejs/8.5.0/firebase-app.js"></script>
-<script src="https://www.gstatic.com/firebasejs/8.5.0/firebase-firestore.js"></script>
 
 <script type="text/javascript">
-	var firebaseConfig = {
-	  apiKey: "AIzaSyDfTJJ425U4OY0xac6jdhtSxDeuJ-OF-lE",
-	  authDomain: "retailproject-6f4fc.firebaseapp.com",
-	  projectId: "retailproject-6f4fc",
-	  storageBucket: "retailproject-6f4fc.appspot.com",
-	  messagingSenderId: "653667385625",
-	  appId: "1:653667385625:web:a5aed08500de80839f0588",
-	  measurementId: "G-9SKTRHHSW9"
-	};
+  var firebaseConfig = {
+    apiKey: "AIzaSyDfTJJ425U4OY0xac6jdhtSxDeuJ-OF-lE",
+    authDomain: "retailproject-6f4fc.firebaseapp.com",
+    projectId: "retailproject-6f4fc",
+    storageBucket: "retailproject-6f4fc.appspot.com",
+    messagingSenderId: "653667385625",
+    appId: "1:653667385625:web:a5aed08500de80839f0588",
+    measurementId: "G-9SKTRHHSW9"
+  };
 
-	firebase.initializeApp(firebaseConfig);
-	//firebase.analytics();
-	var db=firebase.firestore().collection("personal")
-	Eid = "";
-	ReadData();
+  firebase.initializeApp(firebaseConfig);
+  //firebase.analytics();
+  var db=firebase.firestore().collection("personal")
+
 
 
     async function main() {
@@ -72,8 +171,8 @@
       document.getElementById("pictureUrl").src = profile.pictureUrl
       document.getElementById("userId").append(profile.userId)
       document.getElementById("displayName").append(profile.displayName)
-      document.getElementById("statusMessage").append(profile.statusMessage)
-      document.getElementById("decodedIDToken").append(liff.getDecodedIDToken().email)
+      //document.getElementById("statusMessage").append(profile.statusMessage)
+      //document.getElementById("decodedIDToken").append(liff.getDecodedIDToken().email)
     }
 
 
@@ -99,142 +198,14 @@
       })
     }
 
-
-	function ReadData() {
-		db.orderBy("Firstname").onSnapshot(function(snapshot){
-			snapshot.docChanges().forEach(function(change){
-				if(change.type === "added") {
-					ShowData(change.doc);
-				}
-				if(change.type === "modified") {
-					UpdateData(change.doc);
-				}
-				if(change.type === "removed") {
-					var node = document.getElementById("L_"+change.doc.id);
-					node.parentNode.removeChild(node);
-					//ShowData(change.doc);
-				}				
-			});
-		});
-	}
-
-
-
-	function ShowData(doc) {
-		var ul = document.getElementById("show");
-		var node = document.createElement("LI");
-		node.id = "L_"+doc.id;
-		var t1 = document.createTextNode(doc.data().Firstname + " | ");
-		var t2 = document.createTextNode(doc.data().Lastname + " | ");
-		var t3 = document.createTextNode(doc.data().Age);
-		node.appendChild(t1);
-		node.appendChild(t2);
-		node.appendChild(t3);
-
-		//delete
-		var b = document.createElement("BUTTON");
-		b.innerHTML = "deleted";
-		b.addEventListener("click",function(){
-			RemoveData(doc.id);
-		});
-		node.appendChild(b);
-
-		//edit
-		var b2 = document.createElement("BUTTON");
-		b2.innerHTML = "edit";
-		b2.addEventListener("click",function(){
-			EditData(
-				doc.id,
-				doc.data().Firstname,
-				doc.data().Lastname,
-				doc.data().Age
-			);
-		});
-		node.appendChild(b2);
-		ul.appendChild(node);
-	}
-
-
-	function UpdateData(doc) {
-		var node = document.getElementById("L_" + doc.id);
-		node.innerHTML = "";
-		var t1 = document.createTextNode(doc.data().Firstname + " | ");
-		var t2 = document.createTextNode(doc.data().Lastname + " | ");
-		var t3 = document.createTextNode(doc.data().Age);
-		node.appendChild(t1);
-		node.appendChild(t2);
-		node.appendChild(t3);
-
-		//delete
-		var b = document.createElement("BUTTON");
-		b.innerHTML = "deleted";
-		b.addEventListener("click",function(){
-			RemoveData(doc.id);
-		});
-		node.appendChild(b);
-
-		//edit
-		var b2 = document.createElement("BUTTON");
-		b2.innerHTML = "edit";
-		b2.addEventListener("click",function(){
-			EditData(
-				doc.id,
-				doc.data().Firstname,
-				doc.data().Lastname,
-				doc.data().Age
-			);
-		});
-		node.appendChild(b2);
-		//ul.appendChild(node);
-	}
-
-
-
-
-
-
-	//AddData("steven","wonder",66);
-	function AddData(Fname,Lname,Age) {
-		if (Eid == "") {
-			if(Fname!="" && Lname!="" && Age!="") {
-				db.add({
-					Firstname : Fname,
-					Lastname : Lname,
-					Age : Age
-				});				
-			} else {
-				alert("Please add First Name bofore Save");
-			}
-		} else {
-			db.doc(Eid).update({
-				Firstname : Fname,
-				Lastname : Lname,
-				Age : Age				
-			});
-			Eid = "";
-			document.getElementById("txtFirstName").value = "";
-			document.getElementById("txtLastName").value = "";
-			document.getElementById("txtAge").value = "";		}
-
-	}
-
-	function RemoveData(id) {
-		db.doc(id).delete();
-	}
-
-
-	function EditData(id,Fname,Lname,Age) {
-		Eid = id;
-		document.getElementById("txtFirstName").value = Fname;
-		document.getElementById("txtLastName").value = Lname;
-		document.getElementById("txtAge").value = Age;
-
-	}
-
-
-
 </script>
+
+  <script src="js/profile.js"></script>
+
+
+
 
 
 </body>
+
 </html>
