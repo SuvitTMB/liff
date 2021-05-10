@@ -100,8 +100,8 @@
         <div class="section-title" data-aos="fade-up" style="margin-top:-10px;color:#ffffff;">
           <center>
           <div style="font-size: 15px;">ตรวจสอบข้อมูลของคุณ</div>
-          <div style="padding:10px;"><img src="./assets/img/id08400.jpg" class="imgprofile-s"></div>
-          <div style="color:#ffff00;font-size:16px;">website</div>
+          <div style="padding:10px;"><img id="pictureUrl1" class="imgprofile"></div>
+          <div style="color:#ffff00;font-size:16px;"><p id="displayName1"></p></div>
           </center>
           <div style="color:#ccc;text-align: left;padding:5px 30px;margin-top:15px;font-size:13px;">
             <div>ชื่อ-นามสกุล (ภาษาไทย) *</div>
@@ -170,8 +170,10 @@
     async function getUserProfile() {
       const profile = await liff.getProfile()
       document.getElementById("pictureUrl").src = profile.pictureUrl
+      document.getElementById("pictureUrl1").src = profile.pictureUrl
       document.getElementById("userId").append(profile.userId)
       document.getElementById("displayName").append(profile.displayName)
+      document.getElementById("displayName1").append(profile.displayName)
       //document.getElementById("statusMessage").append(profile.statusMessage)
       //document.getElementById("decodedIDToken").append(liff.getDecodedIDToken().email)
     }
