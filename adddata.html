@@ -151,7 +151,6 @@
 */
 
     async function main() {
-      //alert("LINE Developers x Skooldio")
       await liff.init({ liffId: "1655966947-5rJYErwX" })
       document.getElementById("isLoggedIn").append(liff.isLoggedIn())
       if(liff.isLoggedIn()) {
@@ -181,7 +180,6 @@
     function closed() {
       liff.closeWindow()
     }
-/*
     async function scanCode() {
       alert("Scan QRCode")
       const result = await liff.scanCode()
@@ -195,6 +193,7 @@
       })
     }
 
+/*
 
   function ReadData() {
     db.orderBy("Firstname").onSnapshot(function(snapshot){
