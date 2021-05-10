@@ -129,8 +129,11 @@
 <script src="https://www.gstatic.com/firebasejs/8.5.0/firebase-app.js"></script>
 <script src="https://www.gstatic.com/firebasejs/8.5.0/firebase-firestore.js"></script>
 
+<script src="https://static.line-scdn.net/liff/edge/versions/2.8.1/sdk.js"></script>
+<script src="https://www.gstatic.com/firebasejs/8.5.0/firebase-app.js"></script>
+<script src="https://www.gstatic.com/firebasejs/8.5.0/firebase-firestore.js"></script>
+
 <script type="text/javascript">
-	/*
   var firebaseConfig = {
     apiKey: "AIzaSyDfTJJ425U4OY0xac6jdhtSxDeuJ-OF-lE",
     authDomain: "retailproject-6f4fc.firebaseapp.com",
@@ -140,14 +143,16 @@
     appId: "1:653667385625:web:a5aed08500de80839f0588",
     measurementId: "G-9SKTRHHSW9"
   };
-  firebase.initializeApp(firebaseConfig);
-*/
-  //firebase.analytics();
-  //var db=firebase.firestore().collection("personal")
 
+  firebase.initializeApp(firebaseConfig);
+  //firebase.analytics();
+  var db=firebase.firestore().collection("personal")
+  Eid = "";
+  ReadData();
 
 
     async function main() {
+      //alert("LINE Developers x Skooldio")
       await liff.init({ liffId: "1655966947-5rJYErwX" })
       document.getElementById("isLoggedIn").append(liff.isLoggedIn())
       if(liff.isLoggedIn()) {
@@ -165,7 +170,7 @@
       document.getElementById("userId").append(profile.userId)
       document.getElementById("displayName").append(profile.displayName)
       document.getElementById("statusMessage").append(profile.statusMessage)
-      //document.getElementById("decodedIDToken").append(liff.getDecodedIDToken().email)
+      document.getElementById("decodedIDToken").append(liff.getDecodedIDToken().email)
     }
 
 
@@ -192,6 +197,136 @@
     }
 
 
+  function ReadData() {
+    db.orderBy("Firstname").onSnapshot(function(snapshot){
+      snapshot.docChanges().forEach(function(change){
+        if(change.type === "added") {
+          ShowData(change.doc);
+        }
+        if(change.type === "modified") {
+          UpdateData(change.doc);
+        }
+        if(change.type === "removed") {
+          var node = document.getElementById("L_"+change.doc.id);
+          node.parentNode.removeChild(node);
+          //ShowData(change.doc);
+        }       
+      });
+    });
+  }
+
+
+
+  function ShowData(doc) {
+    var ul = document.getElementById("show");
+    var node = document.createElement("LI");
+    node.id = "L_"+doc.id;
+    var t1 = document.createTextNode(doc.data().Firstname + " | ");
+    var t2 = document.createTextNode(doc.data().Lastname + " | ");
+    var t3 = document.createTextNode(doc.data().Age);
+    node.appendChild(t1);
+    node.appendChild(t2);
+    node.appendChild(t3);
+
+    //delete
+    var b = document.createElement("BUTTON");
+    b.innerHTML = "deleted";
+    b.addEventListener("click",function(){
+      RemoveData(doc.id);
+    });
+    node.appendChild(b);
+
+    //edit
+    var b2 = document.createElement("BUTTON");
+    b2.innerHTML = "edit";
+    b2.addEventListener("click",function(){
+      EditData(
+        doc.id,
+        doc.data().Firstname,
+        doc.data().Lastname,
+        doc.data().Age
+      );
+    });
+    node.appendChild(b2);
+    ul.appendChild(node);
+  }
+
+
+  function UpdateData(doc) {
+    var node = document.getElementById("L_" + doc.id);
+    node.innerHTML = "";
+    var t1 = document.createTextNode(doc.data().Firstname + " | ");
+    var t2 = document.createTextNode(doc.data().Lastname + " | ");
+    var t3 = document.createTextNode(doc.data().Age);
+    node.appendChild(t1);
+    node.appendChild(t2);
+    node.appendChild(t3);
+
+    //delete
+    var b = document.createElement("BUTTON");
+    b.innerHTML = "deleted";
+    b.addEventListener("click",function(){
+      RemoveData(doc.id);
+    });
+    node.appendChild(b);
+
+    //edit
+    var b2 = document.createElement("BUTTON");
+    b2.innerHTML = "edit";
+    b2.addEventListener("click",function(){
+      EditData(
+        doc.id,
+        doc.data().Firstname,
+        doc.data().Lastname,
+        doc.data().Age
+      );
+    });
+    node.appendChild(b2);
+    //ul.appendChild(node);
+  }
+
+
+
+
+
+
+  //AddData("steven","wonder",66);
+  function AddData(Fname,Lname,Age) {
+    if (Eid == "") {
+      if(Fname!="" && Lname!="" && Age!="") {
+        db.add({
+          Firstname : Fname,
+          Lastname : Lname,
+          Age : Age
+        });       
+      } else {
+        alert("Please add First Name bofore Save");
+      }
+    } else {
+      db.doc(Eid).update({
+        Firstname : Fname,
+        Lastname : Lname,
+        Age : Age       
+      });
+      Eid = "";
+      document.getElementById("txtFirstName").value = "";
+      document.getElementById("txtLastName").value = "";
+      document.getElementById("txtAge").value = "";   }
+
+  }
+
+  function RemoveData(id) {
+    db.doc(id).delete();
+  }
+
+
+  function EditData(id,Fname,Lname,Age) {
+    Eid = id;
+    document.getElementById("txtFirstName").value = Fname;
+    document.getElementById("txtLastName").value = Lname;
+    document.getElementById("txtAge").value = Age;
+
+  }
 
 
 
