@@ -163,6 +163,7 @@
   var aStatusConfirm = "";
   var aStatusEdit = "";
   var aPicture = "";
+  var aLinename = "";
 
   //var dateString = timeSolver.getString(new Date(), "YYYY/MM/DD HH:MM:SS.SSS")
   var dateString = new Date().toLocaleString('en-US', { timeZone: 'Asia/Jakarta' });
@@ -211,6 +212,7 @@
       document.getElementById("displayName1").append(profile.displayName);
       aPicture = profile.pictureUrl;
       alineID = profile.userId;
+      aLinename = profile.displayName;
     }
 
 
@@ -289,7 +291,7 @@
         empAddress : document.getElementById("address").value,  
         memo : document.getElementById("memo").value, 
         */   
-        lineID : alineID,
+        linename : aLinename,
         empName : a1,
         empID : a2,
         empEmail : a3,
@@ -306,6 +308,7 @@
 
       db.add({
         lineID : alineID,
+        linename : aLinename,
         empName : a1,
         empID : a2,
         empEmail : a3,
