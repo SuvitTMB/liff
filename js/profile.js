@@ -1,3 +1,12 @@
+
+
+$(document).ready(function () {
+    main()
+	document.getElementById('CheckLogin').style.display='block';
+	document.getElementById('CheckProfile').style.display='none';
+});
+
+
 /*
   var firebaseConfig = {
     apiKey: "AIzaSyDfTJJ425U4OY0xac6jdhtSxDeuJ-OF-lE",
@@ -25,15 +34,13 @@
         liff.login()
       }
     }
-    main()
-	document.getElementById('CheckLogin').style.display='block';
-	document.getElementById('CheckProfile').style.display='none';
+
 
     async function getUserProfile() {
       const profile = await liff.getProfile()
       document.getElementById("pictureUrl").src = profile.pictureUrl
       document.getElementById("pictureUrl1").src = profile.pictureUrl
-      ///document.getElementById("userId").append(profile.userId)
+      document.getElementById("userId").append(profile.userId)
       document.getElementById("displayName").append(profile.displayName)
       document.getElementById("displayName1").append(profile.displayName)
       //document.getElementById("statusMessage").append(profile.statusMessage)
