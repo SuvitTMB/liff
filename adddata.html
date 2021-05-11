@@ -269,6 +269,7 @@
 
   function ClickSaveProfile() {
     if(aCheck==1) {
+      var aaa = "1";
       db.doc(Eid).update({
         empName : document.getElementById("fname").value,
         empID : document.getElementById("empid").value,
@@ -276,7 +277,8 @@
         empPhone : document.getElementById("phone").value,
         empBr : document.getElementById("br").value,
         empAddress : document.getElementById("address").value,  
-        memo : document.getElementById("memo").value
+        memo : document.getElementById("memo").value,    
+        statusedit : aaa   
       });
       //alert("Save Done");
     } else {
@@ -288,7 +290,8 @@
         empPhone : document.getElementById("phone").value,
         empBr : document.getElementById("br").value,
         empAddress : document.getElementById("address").value,   
-        memo : document.getElementById("memo").value
+        memo : document.getElementById("memo").value,    
+        statusedit : aaa   
       });       
       //alert("New User");
     }
