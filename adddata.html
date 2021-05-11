@@ -196,6 +196,7 @@
       document.getElementById("userId").append(profile.userId);
       document.getElementById("displayName").append(profile.displayName);
       document.getElementById("displayName1").append(profile.displayName);
+      aPicture = profile.pictureUrl;
       alineID = profile.userId;
     }
 
@@ -223,6 +224,7 @@
   var Eid = "";
   var aStatusConfirm = "";
   var aStatusEdit = "";
+  var aPicture = "";
 
   function ReadData(gLineID) {
     db.where('lineID','==',gLineID).get().then((snapshot)=> {
@@ -304,6 +306,7 @@
         empBr : a5,
         empAddress : a6,   
         memo : a7, 
+        empPicture : aPicture;
 
         /*
         empID : document.getElementById("empid").value,
