@@ -164,6 +164,16 @@
   var aStatusEdit = "";
   var aPicture = "";
 
+	var m = new Date();
+	var dateString =
+	    m.getUTCFullYear() + "/" +
+	    ("0" + (m.getUTCMonth()+1)).slice(+7) + "/" +
+	    ("0" + m.getUTCDate()).slice(+7) + " " +
+	    ("0" + m.getUTCHours()).slice(+7) + ":" +
+	    ("0" + m.getUTCMinutes()).slice(+7) + ":" +
+	    ("0" + m.getUTCSeconds()).slice(+7);
+
+	console.log(dateString);
 
 
   var firebaseConfig = {
