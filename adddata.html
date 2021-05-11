@@ -93,7 +93,7 @@
             <div style="color:#ffff00;font-size:16px;"><p id="displayName"></p></div>
             <div class="btn-t2" onclick="ClickCheckLogin()">คลิกที่นี่ ... เพื่อตรวจสอบข้อมูล</div>
             <div style="padding-top:25px;color:#ffffff;">ขอความร่วมมือในการตรวจสอบความถูกต้อง<br>ของข้อมูลของท่านในการเข้าใช้งาน LINE Retail Society</div>
-            <div style="color:#ffff00;"><p id="isLoggedIn"></p><p id="userId">|0</p><p id="userId1">|1</p></div>
+            <div style="color:#ffff00;"><p id="isLoggedIn"></p><p id="userId"></p><p id="userId1">|1</p></div>
             </center>
           </div>
         </div>
@@ -139,7 +139,6 @@
 <script src="https://www.gstatic.com/firebasejs/8.5.0/firebase-firestore.js"></script>
 
 <script type="text/javascript">
-/*
   var firebaseConfig = {
     apiKey: "AIzaSyDfTJJ425U4OY0xac6jdhtSxDeuJ-OF-lE",
     authDomain: "retailproject-6f4fc.firebaseapp.com",
@@ -152,18 +151,19 @@
 
   firebase.initializeApp(firebaseConfig);
   //firebase.analytics();
-  var db=firebase.firestore().collection("personal")
-  Eid = "";
+  var db=firebase.firestore().collection("CheckProfile")
+  var alineID = "";
+/*
   ReadData();
 */
 
     async function main() {
-      await liff.init({ liffId: "1655966947-5rJYErwX" })
-      document.getElementById("isLoggedIn").append(liff.isLoggedIn())
+      await liff.init({ liffId: "1655966947-5rJYErwX" });
+      document.getElementById("isLoggedIn").append(liff.isLoggedIn());
       if(liff.isLoggedIn()) {
-        getUserProfile()
+        getUserProfile();
       } else {
-        liff.login()
+        liff.login();
       }
     }
     main()
@@ -171,29 +171,31 @@
 	document.getElementById('CheckProfile').style.display='none';
 
     async function getUserProfile() {
-      const profile = await liff.getProfile()
-      document.getElementById("pictureUrl").src = profile.pictureUrl
-      document.getElementById("pictureUrl1").src = profile.pictureUrl
-      document.getElementById("userId").append(profile.userId)
-      document.getElementById("displayName").append(profile.displayName)
-      document.getElementById("displayName1").append(profile.displayName)
+      const profile = await liff.getProfile();
+      document.getElementById("pictureUrl").src = profile.pictureUrl;
+      document.getElementById("pictureUrl1").src = profile.pictureUrl;
+      document.getElementById("userId").append(profile.userId);
+      document.getElementById("displayName").append(profile.displayName);
+      document.getElementById("displayName1").append(profile.displayName);
+      alineID = document.getElementById("userId").append(profile.userId);
+      alert(alineID);
       //document.getElementById("statusMessage").append(profile.statusMessage)
       //document.getElementById("decodedIDToken").append(liff.getDecodedIDToken().email)
     }
 
 
     function logOut() {
-      liff.logout()
-      window.location.reload()
+      liff.logout();
+      window.location.reload();
     }
 
     function closed() {
-      liff.closeWindow()
+      liff.closeWindow();
     }
     async function scanCode() {
-      alert("Scan QRCode")
-      const result = await liff.scanCode()
-      document.getElementById("scanCode").append(result.value)
+      alert("Scan QRCode");
+      const result = await liff.scanCode();
+      document.getElementById("scanCode").append(result.value);
     }
 
     function openWindow() {
