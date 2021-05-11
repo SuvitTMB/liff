@@ -2,37 +2,42 @@
 <html lang="en">
 
 <head>
-  <meta charset="utf-8">
-  <meta content="width=device-width, initial-scale=1.0" name="viewport">
-  <!-- Google Tag Manager -->
-  <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
-  new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
-  j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
-  'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
-  })(window,document,'script','dataLayer','GTM-PW7HPDW');</script>
-  <!-- End Google Tag Manager -->
-  <title>LINE Retail Society</title>
-  <meta content="" name="description">
-  <meta content="" name="keywords">
+	<meta charset="utf-8">
+	<meta content="width=device-width, initial-scale=1.0" name="viewport">
+	<!-- Google Tag Manager -->
+	<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+	new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+	j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+	'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+	})(window,document,'script','dataLayer','GTM-PW7HPDW');</script>
+	<!-- End Google Tag Manager -->
+	<title>LINE Retail Society</title>
+	<meta content="" name="description">
+	<meta content="" name="keywords">
 
-  <!-- Favicons -->
-  <link href="assets/img/favicon.ico" rel="icon">
-  <link href="assets/img/apple-touch-icon.png" rel="apple-touch-icon">
+	<!-- Favicons -->
+	<link href="assets/img/favicon.ico" rel="icon">
+	<link href="assets/img/apple-touch-icon.png" rel="apple-touch-icon">
 
-  <!-- Vendor CSS Files -->
-  <link href="assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
-  <link href="assets/vendor/icofont/icofont.min.css" rel="stylesheet">
-  <link href="assets/vendor/boxicons/css/boxicons.min.css" rel="stylesheet">
-  <link href="assets/vendor/animate.css/animate.min.css" rel="stylesheet">
-  <link href="assets/vendor/venobox/venobox.css" rel="stylesheet">
-  <link href="assets/vendor/owl.carousel/assets/owl.carousel.min.css" rel="stylesheet">
-  <link href="assets/vendor/aos/aos.css" rel="stylesheet">
+	<!-- Vendor CSS Files -->
+	<link href="assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+	<link href="assets/vendor/icofont/icofont.min.css" rel="stylesheet">
+	<link href="assets/vendor/boxicons/css/boxicons.min.css" rel="stylesheet">
+	<link href="assets/vendor/animate.css/animate.min.css" rel="stylesheet">
+	<link href="assets/vendor/venobox/venobox.css" rel="stylesheet">
+	<link href="assets/vendor/owl.carousel/assets/owl.carousel.min.css" rel="stylesheet">
+	<link href="assets/vendor/aos/aos.css" rel="stylesheet">
 
-  <!-- Template Main CSS File -->
-  <link rel="stylesheet" type="text/css" href="css/ekachon.css">
-  <link rel="stylesheet" type="text/css" href="css/button.css">
-  <link rel="stylesheet" type="text/css" href="css/app.css">
-  <link href="assets/css/style.css" rel="stylesheet">
+	<!-- Template Main CSS File -->
+	<link rel="stylesheet" type="text/css" href="css/ekachon.css">
+	<link rel="stylesheet" type="text/css" href="css/button.css">
+	<link rel="stylesheet" type="text/css" href="css/app.css">
+	<link href="assets/css/style.css" rel="stylesheet">
+
+	<script src="https://static.line-scdn.net/liff/edge/versions/2.8.1/sdk.js"></script>
+	<script src="https://www.gstatic.com/firebasejs/8.5.0/firebase-app.js"></script>
+	<script src="https://www.gstatic.com/firebasejs/8.5.0/firebase-firestore.js"></script>
+
 </head>
 
 <body style="background-color: #0056ff;margin: 0;" >
@@ -134,9 +139,6 @@
   <!-- Template Main JS File 
   <script src="js/config.js"></script>-->
 
-<script src="https://static.line-scdn.net/liff/edge/versions/2.8.1/sdk.js"></script>
-<script src="https://www.gstatic.com/firebasejs/8.5.0/firebase-app.js"></script>
-<script src="https://www.gstatic.com/firebasejs/8.5.0/firebase-firestore.js"></script>
 
 <script type="text/javascript">
   var firebaseConfig = {
@@ -156,6 +158,9 @@
 /*
   ReadData();
 */
+
+
+
 
     async function main() {
       await liff.init({ liffId: "1655966947-5rJYErwX" });
@@ -178,12 +183,12 @@
       document.getElementById("displayName").append(profile.displayName);
       document.getElementById("displayName1").append(profile.displayName);
       alineID = profile.userId;
-      alert(alineID);
+      //alert(alineID);
       //document.getElementById("statusMessage").append(profile.statusMessage)
       //document.getElementById("decodedIDToken").append(liff.getDecodedIDToken().email)
     }
 
-
+/*
     function logOut() {
       liff.logout();
       window.location.reload();
@@ -197,7 +202,7 @@
       const result = await liff.scanCode();
       document.getElementById("scanCode").append(result.value);
     }
-
+*/
     function openWindow() {
       liff.openWindow({
         url: "https://line.me",
@@ -209,7 +214,52 @@
 	function ClickCheckLogin() {
 	  document.getElementById('CheckLogin').style.display='none';
 	  document.getElementById('CheckProfile').style.display='block';
+	  GetLineID(alineID);
 	}
+
+
+
+  function GetLineID(gLineID) {
+	dbRef.on("value", snap=> {
+	   console.log(snap.val());
+	});
+
+/*
+    var ul = document.getElementById("show");
+    var node = document.createElement("LI");
+    node.id = "L_"+doc.id;
+    var t1 = document.createTextNode(doc.data().Firstname + " | ");
+    var t2 = document.createTextNode(doc.data().Lastname + " | ");
+    var t3 = document.createTextNode(doc.data().Age);
+    node.appendChild(t1);
+    node.appendChild(t2);
+    node.appendChild(t3);
+
+    //delete
+    var b = document.createElement("BUTTON");
+    b.innerHTML = "deleted";
+    b.addEventListener("click",function(){
+      RemoveData(doc.id);
+    });
+    node.appendChild(b);
+
+    //edit
+    var b2 = document.createElement("BUTTON");
+    b2.innerHTML = "edit";
+    b2.addEventListener("click",function(){
+      EditData(
+        doc.id,
+        doc.data().Firstname,
+        doc.data().Lastname,
+        doc.data().Age
+      );
+    });
+    node.appendChild(b2);
+    ul.appendChild(node);
+*/
+  }
+
+
 
 /*
 
