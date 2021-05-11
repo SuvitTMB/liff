@@ -156,6 +156,16 @@
 
 
 <script type="text/javascript">
+  //var alineID = "Ua6b6bf745bd9bfd01a180de1a05c23b3";
+  //var alineID = "testlineid";
+  var aCheck = 0;
+  var Eid = "";
+  var aStatusConfirm = "";
+  var aStatusEdit = "";
+  var aPicture = "";
+
+
+
   var firebaseConfig = {
     apiKey: "AIzaSyDfTJJ425U4OY0xac6jdhtSxDeuJ-OF-lE",
     authDomain: "retailproject-6f4fc.firebaseapp.com",
@@ -216,15 +226,6 @@
 	  //GetLineID(alineID);
 	}
 
-
-
-  //var alineID = "Ua6b6bf745bd9bfd01a180de1a05c23b3";
-  //var alineID = "testlineid";
-  var aCheck = 0;
-  var Eid = "";
-  var aStatusConfirm = "";
-  var aStatusEdit = "";
-  var aPicture = "";
 
   function ReadData(gLineID) {
     db.where('lineID','==',gLineID).get().then((snapshot)=> {
@@ -292,6 +293,7 @@
         empBr : a5,
         empAddress : a6,   
         memo : a7, 
+        empPicture : aPicture;
         statusconfirm : "0",
         statusedit : "1"   
       });
