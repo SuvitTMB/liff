@@ -262,25 +262,34 @@
 
 
   function ClickSaveProfile() {
-	if(document.getElementById("fname").value!="") { var a1 = document.getElementById("fname").value; } else { var a1 = null;}
-	if(document.getElementById("empid").value!="") { var a2 = document.getElementById("empid").value; } else { var a2 = null;}
-	if(document.getElementById("email").value!="") { var a3 = document.getElementById("email").value; } else { var a3 = null;}
-	if(document.getElementById("phone").value!="") { var a4 = document.getElementById("phone").value; } else { var a4 = null;}
-	if(document.getElementById("br").value!="") { var a5 = document.getElementById("br").value; } else { var a5 = null;}
-	if(document.getElementById("address").value!="") { var a6 = document.getElementById("address").value; } else { var a6 = null;}
-	if(document.getElementById("memo").value!="") { var a7 = document.getElementById("memo").value; } else { var a7 = null;}
+	if(document.getElementById("fname").value!="") { var a1 = document.getElementById("fname").value; } else { var a1 = "";}
+	if(document.getElementById("empid").value!="") { var a2 = document.getElementById("empid").value; } else { var a2 = "";}
+	if(document.getElementById("email").value!="") { var a3 = document.getElementById("email").value; } else { var a3 = "";}
+	if(document.getElementById("phone").value!="") { var a4 = document.getElementById("phone").value; } else { var a4 = "";}
+	if(document.getElementById("br").value!="") { var a5 = document.getElementById("br").value; } else { var a5 = "";}
+	if(document.getElementById("address").value!="") { var a6 = document.getElementById("address").value; } else { var a6 = "";}
+	if(document.getElementById("memo").value!="") { var a7 = document.getElementById("memo").value; } else { var a7 = "";}
 
 
 
     if(aCheck==1) {
       db.doc(Eid).update({
+      	/*
         empName : document.getElementById("fname").value,
         empID : document.getElementById("empid").value,
         empEmail : document.getElementById("email").value,
         empPhone : document.getElementById("phone").value,
         empBr : document.getElementById("br").value,
         empAddress : document.getElementById("address").value,  
-        memo : document.getElementById("memo").value,    
+        memo : document.getElementById("memo").value, 
+        */   
+        empName : a1,
+        empID : a2,
+        empEmail : a3,
+        empPhone : a4,
+        empBr : a5,
+        empAddress : a6,   
+        memo : a7, 
         statusconfirm : "0",
         statusedit : "1"   
       });
