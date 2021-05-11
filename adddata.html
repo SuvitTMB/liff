@@ -220,10 +220,10 @@
 
 
   function GetLineID(gLineID) {
-	dbRef.on("value", snap=> {
-	   console.log(snap.val());
+	db.on("value", snap => {
+	    console.log(snap); // this key will output users
+	    console.log(snap.key); // this method will return full user
 	});
-
 /*
     var ul = document.getElementById("show");
     var node = document.createElement("LI");
