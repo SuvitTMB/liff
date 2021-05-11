@@ -97,7 +97,7 @@
             <div style="padding:10px;"><img id="pictureUrl" class="imgprofile"></div>
             <div style="color:#ffff00;font-size:16px;"><p id="displayName"></p></div>
             <div class="btn-t2" onclick="ClickCheckLogin()">คลิกที่นี่ ... เพื่อตรวจสอบข้อมูล</div>
-            <div style="padding-top:25px;color:#ffffff;">ขอความร่วมมือในการตรวจสอบความถูกต้อง<br>ของข้อมูลของท่านในการเข้าใช้งาน LINE Retail Society</div>
+            <div style="padding-top:25px;color:#ffffff;">ขอความร่วมมือในการตรวจสอบความถูกต้อง<br>ของข้อมูลของท่านในการเข้าใช้งาน LINE Retail Society<br>*** ขอสงวนสิทธิ์การเข้าใช้งานเฉพาะชาว Retail เท่านั้น ***</div>
             <div style="color:#ffff00;"><p id="isLoggedIn"></p><p id="userId"></p></div>
             </center>
           </div>
@@ -113,27 +113,40 @@
           </center>
           <div style="color:#ccc;text-align: left;padding:5px 30px;margin-top:15px;font-size:13px;">
             <div>ชื่อ-นามสกุล (ภาษาไทย) *</div>
-            <div><input type="text" id="fname" name="firstname" placeholder="ชื่อ นามสกุล .." disabled></div>
+            <div><input type="text" id="fname" placeholder="ชื่อ นามสกุล .."></div>
             <div>รหัสพนักงาน (ttb bank) *</div>
-            <div><input type="text" id="empid" name="empid" placeholder="รหัสพนักงาน .." disabled></div>
+            <div><input type="text" id="empid" placeholder="รหัสพนักงาน .."></div>
             <div>Email@ttbbank.com</div>
-            <div><input type="text" id="email" name="email" placeholder="ระบุอีเมล์ .."></div>
+            <div><input type="text" id="email" placeholder="ระบุอีเมล์ .."></div>
             <div>โทรศัพท์มือถือ</div>
-            <div><input type="text" id="mobile" name="mobile" placeholder="โทรศัพท์มือถือ .."></div>
+            <div><input type="text" id="phone" placeholder="โทรศัพท์มือถือ .."></div>
             <div>หน่วยงาน (สาขา + รหัสสาขา)</div>
-            <div><input type="text" id="department" name="department" placeholder="หน่วยงาน / สาขา (รหัสสาขา) .."></div>
+            <div><input type="text" id="br" placeholder="หน่วยงาน / สาขา (รหัสสาขา) .."></div>
             <div>ที่จัดส่งของรางวัล (ที่ตั้งสาขา)</div>
-            <div><textarea id="address" name="address" placeholder="ระบุที่จัดส่งของรางวัล .." style="height:100px"></textarea></div>
+            <div><textarea id="address" placeholder="ระบุที่จัดส่งของรางวัล .." style="height:100px"></textarea></div>
             <center><div class="btn-t2" onclick="ClickSaveProfile()">บันทึกรายการ</div></center>
           </div>
         </div>
       </div>
 
+      <div class="container" id="CheckConfirm">
+        <div class="section-title" data-aos="fade-up" style="margin-top:10px;">
+          <div style="color:#ffffff;font-size:18px;margin-top:-20px;">LINE Retail Society</div>
+          <div style="padding:15px 0px 15px 0px;">
+            <center>
+            <div style="padding:10px;"><img id="pictureUrl" class="imgprofile"></div>
+            <div style="color:#ffff00;font-size:16px;"><p id="displayName"></p></div>
+            <div class="btn-t2" onclick="ClickCheckLogin()">คลิกที่นี่ ... แก้ไขข้อมูล</div>
+            <div style="padding-top:25px;color:#ffffff;">กรุณารอการยืนยันตัวตนภายใน 48 ชั่วโมง<br>ก่อนเข้าทำรายการต่อไป</div>
+            <div style="color:#ffff00;"><p id="isLoggedIn"></p><p id="userId"></p></div>
+            </center>
+          </div>
+        </div>
+      </div>
 
     </section>
   </main>
   </div>
-  <a href="activity.html">Link</a>
   <a href="#" class="back-to-top"><i class="icofont-simple-up"></i></a>
 
   <!-- Template Main JS File 
@@ -154,11 +167,14 @@
   firebase.initializeApp(firebaseConfig);
   //firebase.analytics();
   var db = firebase.firestore().collection("CheckProfile");
-  var alineID = "";
+  document.getElementById('CheckLogin').style.display='block';
+  document.getElementById('CheckProfile').style.display='none';
+  document.getElementById('CheckConfirm').style.display='none';
+
+
 /*
   ReadData();
 */
-
 
 
 
@@ -172,8 +188,8 @@
       }
     }
     main()
-	document.getElementById('CheckLogin').style.display='block';
-	document.getElementById('CheckProfile').style.display='none';
+	//document.getElementById('CheckLogin').style.display='block';
+	//document.getElementById('CheckProfile').style.display='none';
 
     async function getUserProfile() {
       const profile = await liff.getProfile();
@@ -188,21 +204,7 @@
       //document.getElementById("decodedIDToken").append(liff.getDecodedIDToken().email)
     }
 
-/*
-    function logOut() {
-      liff.logout();
-      window.location.reload();
-    }
 
-    function closed() {
-      liff.closeWindow();
-    }
-    async function scanCode() {
-      alert("Scan QRCode");
-      const result = await liff.scanCode();
-      document.getElementById("scanCode").append(result.value);
-    }
-*/
     function openWindow() {
       liff.openWindow({
         url: "https://line.me",
@@ -210,19 +212,116 @@
       })
     }
 
-
 	function ClickCheckLogin() {
-	  document.getElementById('CheckLogin').style.display='none';
-	  document.getElementById('CheckProfile').style.display='block';
-	  GetLineID(alineID);
+		document.getElementById('CheckLogin').style.display='none';
+		document.getElementById('CheckProfile').style.display='block';
+		document.getElementById('CheckConfirm').style.display='none';
+		ReadData(alineID);
+	  //GetLineID(alineID);
 	}
 
 
 
-  function GetLineID(gLineID) {
-  	alert(gLineID);
+  //var alineID = "Ua6b6bf745bd9bfd01a180de1a05c23b3";
+  //var alineID = "testlineid";
+  var aCheck = 0;
+  var Eid = "";
+  var aStatusConfirm = "";
+  var aStatusEdit = "";
+
+  function ReadData(gLineID) {
+    db.where('lineID','==',gLineID).get().then((snapshot)=> {
+      snapshot.forEach(doc=> {
+        //console.log(doc);
+        document.getElementById("fname").value = doc.data().empName;
+        document.getElementById("empid").value = doc.data().empID;
+        document.getElementById("email").value = doc.data().empEmail
+        document.getElementById("phone").value = doc.data().empPhone;
+        document.getElementById("br").value = doc.data().empBr;
+        document.getElementById("address").value = doc.data().empAddress;
+        aStatusConfirm = doc.data().statusedit;
+        aStatusEdit = doc.data().statusconfirm;
+        //if(aStatusConfirm==1) {
+          //$('fname').prop('disabled',false);
+          //document.getElementById("fname").classList.add('readonly');
+          //document.getElementById("empid").classList.add('readonly');
+        //}
+        //$('fname').element.classList.add("disabled");
+        //$('empid').disabled = true;
+        Eid = doc.id;
+        aCheck = 1;
+      });
+      //if(aStatusConfirm=="1") {
+      //}
+    });
+  }
+
+
+
+
+  function ClickSaveProfile() {
+    if(aCheck==1) {
+      db.doc(Eid).update({
+        empName : document.getElementById("fname").value,
+        empID : document.getElementById("empid").value,
+        empEmail : document.getElementById("email").value,
+        empPhone : document.getElementById("phone").value,
+        empBr : document.getElementById("br").value,
+        empAddress : document.getElementById("address").value    
+      });
+      //alert("Save Done");
+    } else {
+      db.add({
+        lineID : alineID,
+        empName : document.getElementById("fname").value,
+        empID : document.getElementById("empid").value,
+        empEmail : document.getElementById("email").value,
+        empPhone : document.getElementById("phone").value,
+        empBr : document.getElementById("br").value,
+        empAddress : document.getElementById("address").value    
+      });       
+      alert("New User");
+    }
+
+
+    if(aStatusConfirm==0) {
+      document.getElementById('CheckLogin').style.display='none';
+      document.getElementById('CheckProfile').style.display='none';
+      document.getElementById('CheckConfirm').style.display='block';
+    } else {
+      location.reload(true); 
+    }
+
+  }
+
+
+  	//alert(gLineID);
 
 /*
+
+    if (Eid == "") {
+      if(Fname!="" && Lname!="" && Age!="") {
+        db.add({
+          Firstname : Fname,
+          Lastname : Lname,
+          Age : Age
+        });       
+      } else {
+        alert("Please add First Name bofore Save");
+      }
+    } else {
+      db.doc(Eid).update({
+        Firstname : Fname,
+        Lastname : Lname,
+        Age : Age       
+      });
+      Eid = "";
+      document.getElementById("txtFirstName").value = "";
+      document.getElementById("txtLastName").value = "";
+      document.getElementById("txtAge").value = "";   }
+
+
+
     var ul = document.getElementById("show");
     var node = document.createElement("LI");
     node.id = "L_"+doc.id;
@@ -254,8 +353,8 @@
     });
     node.appendChild(b2);
     ul.appendChild(node);
-*/
   }
+*/
 
 
 
