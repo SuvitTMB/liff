@@ -278,9 +278,14 @@
         statusedit : "1"   
       });
     } else {
+    	if(document.getElementById("empid").value!="") { 
+			var a1 = document.getElementById("empid").value;
+    	} else {
+    		var a1 = null;
+    	}
       db.add({
         lineID : alineID,
-        empName : document.getElementById("fname").value,
+        empName : a1,
         /*
         empID : document.getElementById("empid").value,
         empEmail : document.getElementById("email").value,
