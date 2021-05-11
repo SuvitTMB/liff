@@ -164,9 +164,9 @@
   var aStatusEdit = "";
   var aPicture = "";
 
-  var dateString = timeSolver.getString(new Date(), "YYYY/MM/DD HH:MM:SS.SSS")
-
-	console.log(dateString);
+  //var dateString = timeSolver.getString(new Date(), "YYYY/MM/DD HH:MM:SS.SSS")
+  var dateString = new Date().toLocaleString('en-US', { timeZone: 'Asia/Jakarta' });
+  console.log(dateString);
 
 
   var firebaseConfig = {
