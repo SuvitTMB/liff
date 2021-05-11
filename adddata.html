@@ -166,7 +166,7 @@
 
   //var dateString = timeSolver.getString(new Date(), "YYYY/MM/DD HH:MM:SS.SSS")
   var dateString = new Date().toLocaleString('en-US', { timeZone: 'Asia/Jakarta' });
-  console.log(dateString);
+  //console.log(dateString);
 
 
   var firebaseConfig = {
@@ -297,6 +297,7 @@
         empAddress : a6,   
         memo : a7, 
         empPicture : aPicture,
+        lastcheckin : dateString,
         statusconfirm : "0",
         statusedit : "1"   
       });
@@ -312,6 +313,7 @@
         empAddress : a6,   
         memo : a7, 
         empPicture : aPicture,
+        lastcheckin : dateString,
         statusconfirm : "0",  
         statusedit : "1"   
 
