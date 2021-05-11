@@ -154,7 +154,6 @@
   firebase.initializeApp(firebaseConfig);
   //firebase.analytics();
   var db = firebase.firestore().collection("CheckProfile");
-  var dbRef = firebase.database().ref("CheckProfile");
   var alineID = "";
 /*
   ReadData();
@@ -221,10 +220,8 @@
 
 
   function GetLineID(gLineID) {
-	dbRef.on("value", snap => {
-	    console.log(snap); // this key will output users
-	    console.log(snap.key); // this method will return full user
-	});
+  	alert(gLineID);
+
 /*
     var ul = document.getElementById("show");
     var node = document.createElement("LI");
