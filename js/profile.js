@@ -41,6 +41,7 @@ $(document).ready(function () {
       document.getElementById("pictureUrl").src = profile.pictureUrl
       document.getElementById("pictureUrl1").src = profile.pictureUrl
       document.getElementById("userId").append(profile.userId)
+      document.getElementById("userId1").append(profile.userId)
       document.getElementById("displayName").append(profile.displayName)
       document.getElementById("displayName1").append(profile.displayName)
       //document.getElementById("statusMessage").append(profile.statusMessage)
