@@ -135,7 +135,7 @@
           <div style="color:#ffffff;font-size:18px;margin-top:-20px;">LINE Retail Society</div>
           <div style="padding:15px 0px 15px 0px;">
             <center>
-            <div style="padding:10px;"><img id="pictureUrl1" class="imgprofile"></div>
+            <div style="padding:10px;"><img id="pictureUrl1" class="imgprofile-s"></div>
             <div style="color:#ffff00;font-size:16px;"><p id="displayName"></p></div>
             <div class="btn-t2" onclick="ClickCheckLogin()">คลิกที่นี่ ... แก้ไขข้อมูล</div>
             <div style="padding-top:25px;color:#ffffff;">กรุณารอการยืนยันตัวตนภายใน 48 ชั่วโมง<br>ก่อนเข้าทำรายการต่อไป</div>
@@ -238,10 +238,10 @@
         if(aStatusConfirm==1 && aStatusEdit==1) {
           window.location.href = 'activity.html';
         }        
+        //console.log(doc);
         document.getElementById('CheckLogin').style.display='none';
         document.getElementById('CheckProfile').style.display='block';
         document.getElementById('CheckConfirm').style.display='none';
-        //console.log(doc);
         document.getElementById("fname").value = doc.data().empName;
         document.getElementById("empid").value = doc.data().empID;
         document.getElementById("email").value = doc.data().empEmail
