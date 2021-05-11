@@ -125,7 +125,8 @@
             <div>ที่จัดส่งของรางวัล (ที่ตั้งสาขา)</div>
             <div><textarea id="address" placeholder="ระบุที่จัดส่งของรางวัล .." style="height:100px"></textarea></div>
             <div>ระบุเหตุผลในการเข้าใช้งาน</div>
-            <div><textarea id="memo" placeholder="โปรดระบุ .." style="height:100px"></textarea></div>            <center><div class="btn-t2" onclick="ClickSaveProfile()">บันทึกรายการ</div></center>
+            <div><textarea id="memo" placeholder="โปรดระบุ .." style="height:100px"></textarea></div>            
+            <center><div class="btn-t2" onclick="ClickSaveProfile()">บันทึกรายการ</div></center>
           </div>
         </div>
       </div>
@@ -173,10 +174,6 @@
   document.getElementById('CheckConfirm').style.display='none';
 
 
-/*
-  ReadData();
-*/
-
 
 
     async function main() {
@@ -200,9 +197,6 @@
       document.getElementById("displayName").append(profile.displayName);
       document.getElementById("displayName1").append(profile.displayName);
       alineID = profile.userId;
-      //alert(alineID);
-      //document.getElementById("statusMessage").append(profile.statusMessage)
-      //document.getElementById("decodedIDToken").append(liff.getDecodedIDToken().email)
     }
 
 
@@ -268,8 +262,10 @@
 
 
   function ClickSaveProfile() {
+
+
+
     if(aCheck==1) {
-      var aaa = "1";
       db.doc(Eid).update({
         empName : document.getElementById("fname").value,
         empID : document.getElementById("empid").value,
@@ -278,10 +274,13 @@
         empBr : document.getElementById("br").value,
         empAddress : document.getElementById("address").value,  
         memo : document.getElementById("memo").value,    
-        statusedit : aaa   
+        statusconfirm : "0",
+        statusedit : "1"   
       });
       //alert("Save Done");
     } else {
+/*
+*/
       db.add({
         lineID : alineID,
         empName : document.getElementById("fname").value,
@@ -290,8 +289,9 @@
         empPhone : document.getElementById("phone").value,
         empBr : document.getElementById("br").value,
         empAddress : document.getElementById("address").value,   
-        memo : document.getElementById("memo").value,    
-        statusedit : aaa   
+        memo : document.getElementById("memo").value,  
+        statusconfirm : "0",  
+        statusedit : "1"   
       });       
       //alert("New User");
     }
