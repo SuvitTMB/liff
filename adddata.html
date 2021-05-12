@@ -248,6 +248,15 @@
         document.getElementById("br").value = doc.data().empBr;
         document.getElementById("address").value = doc.data().empAddress;
         document.getElementById("memo").value = doc.data().memo;
+        if(aStatusPass=="0") {
+	        document.getElementById('fname').disabled = false;
+	        document.getElementById('empid').disabled = false;
+	        alert("000");
+        } else if(aStatusPass!="0") {
+	        document.getElementById('fname').disabled = true;
+	        document.getElementById('empid').disabled = true;
+	        alert("111");
+        }
         //if(aStatusPass=="0") {
 	    //    document.getElementById('fname').disabled = false;
 	    //    document.getElementById('empid').disabled = false;
@@ -263,15 +272,6 @@
         aCheck = 1;
       });
     });
-        if(aStatusPass=="0") {
-	        document.getElementById('fname').disabled = false;
-	        document.getElementById('empid').disabled = false;
-	        alert("000");
-        } else if(aStatusPass=="1") {
-	        document.getElementById('fname').disabled = true;
-	        document.getElementById('empid').disabled = true;
-	        alert("111");
-        }
 
       //if(aStatusConfirm=="1") {
       //}
