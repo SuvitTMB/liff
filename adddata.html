@@ -113,7 +113,7 @@
           </center>
           <div style="color:#ccc;text-align: left;padding:5px 30px;margin-top:15px;font-size:13px;">
             <div>ชื่อ-นามสกุล (ภาษาไทย) *</div>
-            <div><input type="text" id="fname" placeholder="ชื่อ นามสกุล .." disabled="disabled"></div>
+            <div><input type="text" id="fname" placeholder="ชื่อ นามสกุล .." disabled></div>
             <div>รหัสพนักงาน (ttb bank) *</div>
             <div><input type="text" id="empid" placeholder="รหัสพนักงาน .." disabled></div>
             <div>Email@ttbbank.com</div>
@@ -248,8 +248,8 @@
         document.getElementById("br").value = doc.data().empBr;
         document.getElementById("address").value = doc.data().empAddress;
         document.getElementById("memo").value = doc.data().memo;
-        $('fname').removeAttr('disabled');
-        $('empid').disabled = false;;
+        $('fname').disabled = true;
+        document.getElementById('empid').disabled = false;
         //if(aStatusConfirm==1) {
           //$('fname').prop('disabled',false);
           //document.getElementById("fname").classList.add('readonly');
