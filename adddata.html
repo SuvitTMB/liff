@@ -248,8 +248,10 @@
         document.getElementById("br").value = doc.data().empBr;
         document.getElementById("address").value = doc.data().empAddress;
         document.getElementById("memo").value = doc.data().memo;
-        $('fname').disabled = true;
-        document.getElementById('empid').disabled = false;
+        if(aStatusPass=="1") {
+	        document.getElementById('fname').disabled = false;
+	        document.getElementById('empid').disabled = false;
+        }
         //if(aStatusConfirm==1) {
           //$('fname').prop('disabled',false);
           //document.getElementById("fname").classList.add('readonly');
