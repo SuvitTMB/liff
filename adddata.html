@@ -248,7 +248,7 @@
         document.getElementById("br").value = doc.data().empBr;
         document.getElementById("address").value = doc.data().empAddress;
         document.getElementById("memo").value = doc.data().memo;
-        $('fname').prop('disabled', false);
+        $('fname').removeAttribute('disabled');
         $('empid').prop('disabled', true);
         //if(aStatusConfirm==1) {
           //$('fname').prop('disabled',false);
