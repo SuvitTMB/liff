@@ -115,7 +115,7 @@
             <div>ชื่อ-นามสกุล (ภาษาไทย) *</div>
             <div><input type="text" id="fname" placeholder="ชื่อ นามสกุล .." disabled="disabled"></div>
             <div>รหัสพนักงาน (ttb bank) *</div>
-            <div><input type="text" id="empid" placeholder="รหัสพนักงาน .." disabled="disabled"></div>
+            <div><input type="text" id="empid" placeholder="รหัสพนักงาน .." disabled></div>
             <div>Email@ttbbank.com</div>
             <div><input type="text" id="email" placeholder="ระบุอีเมล์ .."></div>
             <div>โทรศัพท์มือถือ</div>
@@ -249,7 +249,7 @@
         document.getElementById("address").value = doc.data().empAddress;
         document.getElementById("memo").value = doc.data().memo;
         $('fname').removeAttr('disabled');
-        $('empid').prop('disabled', true);
+        $('empid').disabled = false;;
         //if(aStatusConfirm==1) {
           //$('fname').prop('disabled',false);
           //document.getElementById("fname").classList.add('readonly');
