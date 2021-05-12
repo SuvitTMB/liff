@@ -161,6 +161,7 @@
   var aCheck = 0;
   var Eid = "";
   var aStatusConfirm = "";
+  var aStatusPass = "";
   var aStatusEdit = "";
   var aPicture = "";
   var aLinename = "";
@@ -188,8 +189,6 @@
   document.getElementById('CheckConfirm').style.display='none';
 
 
-
-
     async function main() {
       await liff.init({ liffId: "1655966947-5rJYErwX" });
       document.getElementById("isLoggedIn").append(liff.isLoggedIn());
@@ -200,8 +199,6 @@
       }
     }
     main()
-	//document.getElementById('CheckLogin').style.display='block';
-	//document.getElementById('CheckProfile').style.display='none';
 
     async function getUserProfile() {
       const profile = await liff.getProfile();
@@ -231,11 +228,11 @@
 	  //GetLineID(alineID);
 	}
 
-
   function ReadData(gLineID) {
     db.where('lineID','==',gLineID).get().then((snapshot)=> {
       snapshot.forEach(doc=> {
         aStatusConfirm = doc.data().statusconfirm;
+        aStatusPass = doc.data().statuspass;
         aStatusEdit = doc.data().statusedit;
         if(aStatusConfirm==1 && aStatusEdit==1) {
           window.location.href = 'activity.html';
@@ -302,11 +299,11 @@
         memo : a7, 
         empPicture : aPicture,
         lastcheckin : dateString,
-        statusconfirm : "0",
+        statusconfirm : aStatusConfirm,
+        statuspass : aStatusPass,
         statusedit : "1"   
       });
     } else {
-
       db.add({
         lineID : alineID,
         linename : aLinename,
@@ -320,6 +317,7 @@
         empPicture : aPicture,
         lastcheckin : dateString,
         statusconfirm : "0",  
+        statuspass : "0",
         statusedit : "1"   
 
         /*
