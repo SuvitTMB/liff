@@ -113,9 +113,9 @@
           </center>
           <div style="color:#ccc;text-align: left;padding:5px 30px;margin-top:15px;font-size:13px;">
             <div>ชื่อ-นามสกุล (ภาษาไทย) *</div>
-            <div><input type="text" id="fname" placeholder="ชื่อ นามสกุล .."></div>
+            <div><input type="text" id="fname" placeholder="ชื่อ นามสกุล .." disabled></div>
             <div>รหัสพนักงาน (ttb bank) *</div>
-            <div><input type="text" id="empid" placeholder="รหัสพนักงาน .."></div>
+            <div><input type="text" id="empid" placeholder="รหัสพนักงาน .." disabled></div>
             <div>Email@ttbbank.com</div>
             <div><input type="text" id="email" placeholder="ระบุอีเมล์ .."></div>
             <div>โทรศัพท์มือถือ</div>
@@ -234,7 +234,7 @@
         aStatusConfirm = doc.data().statusconfirm;
         aStatusPass = doc.data().statuspass;
         aStatusEdit = doc.data().statusedit;
-        if(aStatusConfirm==1 && aStatusEdit==1) {
+        if(aStatusConfirm==1) {
           window.location.href = 'activity.html';
         }
         //console.log(doc);
