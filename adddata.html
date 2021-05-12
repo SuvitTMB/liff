@@ -239,7 +239,7 @@
         aStatusEdit = doc.data().statusedit;
         if(aStatusConfirm==1 && aStatusEdit==1) {
           window.location.href = 'activity.html';
-        }        
+        }
         //console.log(doc);
         document.getElementById('CheckLogin').style.display='none';
         document.getElementById('CheckProfile').style.display='block';
@@ -251,6 +251,7 @@
         document.getElementById("br").value = doc.data().empBr;
         document.getElementById("address").value = doc.data().empAddress;
         document.getElementById("memo").value = doc.data().memo;
+        $('fname').addClass("disabled");
         //if(aStatusConfirm==1) {
           //$('fname').prop('disabled',false);
           //document.getElementById("fname").classList.add('readonly');
