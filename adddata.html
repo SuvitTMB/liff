@@ -248,7 +248,8 @@
         document.getElementById("br").value = doc.data().empBr;
         document.getElementById("address").value = doc.data().empAddress;
         document.getElementById("memo").value = doc.data().memo;
-        $('fname').addClass("disabled");
+        $('fname').disabled = false;
+        $('empid').disabled = true;
         //if(aStatusConfirm==1) {
           //$('fname').prop('disabled',false);
           //document.getElementById("fname").classList.add('readonly');
