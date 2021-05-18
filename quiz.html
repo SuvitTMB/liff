@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta content="width=device-width, initial-scale=1.0" name="viewport">
+  <!-- Google Tag Manager -->
+  <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+  new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+  j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+  'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+  })(window,document,'script','dataLayer','GTM-PW7HPDW');</script>
+  <!-- End Google Tag Manager -->
+  <title>LINE Retail Society</title>
+  <meta content="" name="description">
+  <meta content="" name="keywords">
+
+  <!-- Favicons -->
+  <link href="assets/img/favicon.ico" rel="icon">
+  <link href="assets/img/apple-touch-icon.png" rel="apple-touch-icon">
+
+  <!-- Vendor CSS Files -->
+  <link href="assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+  <link href="assets/vendor/icofont/icofont.min.css" rel="stylesheet">
+  <link href="assets/vendor/boxicons/css/boxicons.min.css" rel="stylesheet">
+  <link href="assets/vendor/animate.css/animate.min.css" rel="stylesheet">
+  <link href="assets/vendor/venobox/venobox.css" rel="stylesheet">
+  <link href="assets/vendor/owl.carousel/assets/owl.carousel.min.css" rel="stylesheet">
+  <link href="assets/vendor/aos/aos.css" rel="stylesheet">
+
+  <!-- Template Main CSS File -->
+  <link rel="stylesheet" type="text/css" href="css/ekachon.css">
+  <link rel="stylesheet" type="text/css" href="css/button.css">
+  <link rel="stylesheet" type="text/css" href="css/app.css">
+  <link href="assets/css/style.css" rel="stylesheet">
+
+  <script src="https://static.line-scdn.net/liff/edge/versions/2.8.1/sdk.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/8.5.0/firebase-app.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/8.5.0/firebase-firestore.js"></script>
+
+</head>
+
+<body style="background-color: #0056ff;margin: 0;" >
+  <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-PW7HPDW"
+  height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+  <!--
+  <div class="navbar">
+    <div>
+      <a href="#" class="active">ttb bank</a>
+      <a href="mockrun.html">Mock Run</a>
+      <a href="activity.html">กิจกรรม</a>
+      <a href="carepack.html">Care Pack</a>
+    </div>
+  </div>
+  -->
+  <div class="main">
+  <header id="header">
+    <div class="container d-flex">
+      <div class="logo mr-auto">
+        <h4 class="text-light" style="padding-top:8px;"><a href="index.html"><font color="#0056ff"><font color="#009966">LINE</font> <font color="#666666">Retail</font> <font color="#0056ff">So</font><font color="#f68b1f">ciety</font></a></h4>
+      </div>
+      <!--
+      <nav class="nav-menu d-none d-lg-block">
+        <ul>
+          <li class="active"><a href="index.html">Home</a></li>
+          <li><a href="mockrun.html">Mock Run</a></li>
+          <li><a href="activity.html">กิจกรรม</a></li>
+          <li><a href="carepack.html">Care Pack</a></li>
+        </ul>
+      </nav>
+      -->
+    </div>
+  </header>
+
+
+  <main id="main">
+    <section id="team" class="team section-bg" style="background-color: #0056ff;min-height:450px;">
+      <!--
+      <div class="container" id="Game">
+        <div class="section-title" data-aos="fade-up" style="margin-top:0px;">
+          <div style="color:#ffffff;font-size:18px;margin-top:-20px;">กิจกรรม LINE Retail Society</div>
+          <div style="padding:15px 0px 15px 0px;">
+            <center>
+              <div class="boxgame" onclick="CheckGame(1)">เกมส์ภาพปริศนา ... ทายซิ</div>
+              <div class="boxgame" onclick="CheckGame(2)">เกมส์ตัวเลขปริศนา</div>
+            </center>
+            <center><div class="btn-t2" onClick="window.location='index.html';">กลับไปหน้าหลัก</div></center>
+          </div>
+        </div>
+      </div>
+  	  -->
+
+
+      <div class="container" id="Game-1">
+        <div class="section-title" data-aos="fade-up" style="margin-top:-10px;color:#ffffff;">
+          <center>
+          <div style="font-size: 15px;"><u>เกมส์คำถามชวนคิด</u></div>
+          <div id="DisplayQuiz" style="color:#fff;"></div>
+          </center>
+
+
+        <section id="radio1" class="questions">
+          <p> Question 1) What was orichalcum valued as? <span class="choice_error">Please select a choice</span></p>
+          <label><input type="radio" name="choice0" value="A">Gold</label><span>*</span>
+          <label><input type="radio" name="choice0" value="B">Silver</label><span>*</span>
+          <label><input type="radio" name="choice0" value="C">Bronze</label><span>*</span>
+          <label><input type="radio" name="choice0" value="D">Copper</label><span>*</span>
+          <span id="flag0"></span>
+        </section>
+
+<!--
+          <div style="color:#ccc;text-align: left;padding:5px 30px;margin-top:15px;font-size:13px;">
+            <center>
+            <div>คำตอบของคุณ</div>
+            <div><input type="text" id="fname" name="firstname" placeholder="คุณสามารถตอบได้เพียงครั้งเดียวน้า .." style="min-width:200px;text-align: center;"></div>
+            <div class="btn-t2" onclick="gohome()">ส่งคำตอบ</div>
+	            </center>
+          </div>
+-->
+        </div>
+      </div>
+      <!--
+      <div class="container" id="Game-2">
+        <div class="section-title" data-aos="fade-up" style="margin-top:-10px;color:#ffffff;">
+          <center>
+          <div style="font-size: 15px;">เกมส์ปริศนาตัวเลข<br>ประจำวันที่ : 10/05/2021</div>
+          <div class="countgame2">เข้าร่วมกิจกรรมแล้ว 345 คน</div>
+          <div style="padding:10px;margin-top:20px;background:#fff;border-radius: 10px;height: auto;">
+            <div style="padding:15px 0 20px 0;text-align: left;color:#333;">เกมส์ปริศนาตัวเลข เป็นการวัดดวงว่าใครมีเลขเด็ดกว่าใคร ผู้ที่ทายตัวเลขได้ถูกต้องในแต่ละรอบจะมีรางวัลให้รอบละ 10 รางวัล กรณีที่มีการทายตัวเลขได้ถูกต้องมากกว่า 10 ท่านขึ้นไป จะทำการสุ่มเลือกผู้ที่ได้รับรางวัลเพียง 10 ท่านเท่านั้น<br><br>กติการการแข่งขัน ในแต่ละรอบเลือกตัวเลขเพียง 1 ตัวเลข หลังจากทำการยืนยันคำตอบไปแล้วจะไม่สามารถเปลี่ยนคำตอบได้ ...</div>
+            <div id="BoxSelect"></div>   
+            <div class="clr" style="height: 5px;"></div>
+            <div style="margin-top:15px;color:#ccc;">สามารถส่งคำตอบได้เพียงครั้งเดียว</div>
+            <div id="SelectNum"></div>
+            <div id="aaa"></div>
+            <div class="btn-t2" onclick="SendSelectNum()">ยืนยันคำตอบ</div>
+          </div>
+          </center>
+        </div>
+      </div>
+    	-->
+    </section>
+  </main>
+  </div>
+  <a href="#" class="back-to-top"><i class="icofont-simple-up"></i></a>
+
+  <!-- Vendor JS Files -->
+  <script src="assets/vendor/jquery/jquery.min.js"></script>
+  <script src="assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+  <script src="assets/vendor/jquery.easing/jquery.easing.min.js"></script>
+  <script src="assets/vendor/php-email-form/validate.js"></script>
+  <script src="assets/vendor/jquery-sticky/jquery.sticky.js"></script>
+  <script src="assets/vendor/isotope-layout/isotope.pkgd.min.js"></script>
+  <script src="assets/vendor/venobox/venobox.min.js"></script>
+  <script src="assets/vendor/waypoints/jquery.waypoints.min.js"></script>
+  <script src="assets/vendor/owl.carousel/owl.carousel.min.js"></script>
+  <script src="assets/vendor/aos/aos.js"></script>
+  <script src="assets/js/main.js"></script>
+
+  <!-- Template Main JS File -->
+  <script src="js/quiz.js"></script>
+
+</body>
+
+</html>
