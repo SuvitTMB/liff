@@ -2,7 +2,6 @@ var vLineID = "";
 var vLineName = "";
 var vLinePicture = "";
 
-
   var firebaseConfig = {
     apiKey: "AIzaSyDfTJJ425U4OY0xac6jdhtSxDeuJ-OF-lE",
     authDomain: "retailproject-6f4fc.firebaseapp.com",
@@ -15,36 +14,48 @@ var vLinePicture = "";
 
   firebase.initializeApp(firebaseConfig);
   //firebase.analytics();
-  //var db = firebase.firestore().collection("CheckProfile");
-  //document.getElementById('CheckLogin').style.display='block';
-  //document.getElementById('CheckProfile').style.display='none';
-  //document.getElementById('CheckConfirm').style.display='none';
+  var db=firebase.firestore().collection("personal")
+  Eid = "";
+  ReadData();
 
 
     async function main() {
-      await liff.init({ liffId: "1655966947-5rJYErwX" });
-      document.getElementById("isLoggedIn").append(liff.isLoggedIn());
+      //alert("LINE Developers x Skooldio")
+      await liff.init({ liffId: "1655966947-5rJYErwX" })
+      document.getElementById("isLoggedIn").append(liff.isLoggedIn())
       if(liff.isLoggedIn()) {
-        getUserProfile();
+        getUserProfile()
       } else {
-        liff.login();
+        liff.login()
       }
     }
     main()
 
+
     async function getUserProfile() {
-      const profile = await liff.getProfile();
-      document.getElementById("pictureUrl").src = profile.pictureUrl;
-      document.getElementById("pictureUrl1").src = profile.pictureUrl;
-      document.getElementById("userId").append(profile.userId);
-      document.getElementById("displayName").append(profile.displayName);
-      document.getElementById("displayName1").append(profile.displayName);
-      alert(profile.pictureUrl);
-      aPicture = profile.pictureUrl;
-      alineID = profile.userId;
-      aLinename = profile.displayName;
+      const profile = await liff.getProfile()
+      document.getElementById("pictureUrl").src = profile.pictureUrl
+      document.getElementById("userId").append(profile.userId)
+      document.getElementById("displayName").append(profile.displayName)
+      document.getElementById("statusMessage").append(profile.statusMessage)
+      document.getElementById("decodedIDToken").append(liff.getDecodedIDToken().email)
     }
 
+
+    function logOut() {
+      liff.logout()
+      window.location.reload()
+    }
+
+    function closed() {
+      liff.closeWindow()
+    }
+
+    async function scanCode() {
+      alert("Scan QRCode")
+      const result = await liff.scanCode()
+      document.getElementById("scanCode").append(result.value)
+    }
 
     function openWindow() {
       liff.openWindow({
