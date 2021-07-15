@@ -32,15 +32,22 @@ firebase.initializeApp(firebaseConfig);
 
     async function getUserProfile() {
       const profile = await liff.getProfile();
-      document.getElementById("DisplayLineID").src = profile.pictureUrl;
+      //document.getElementById("DisplayLineID").src = profile.pictureUrl;
       //document.getElementById("userId").append(profile.userId);
       //document.getElementById("displayName").append(profile.displayName);
-      vLinePicture = profile.pictureUrl;
-      vLineID = profile.userId;
-      vLineName = profile.displayName;
-      alert(profile.userId);
+      //vLinePicture = profile.pictureUrl;
+      //vLineID = profile.userId;
+      //vLineName = profile.displayName;
+      alert(profile.userId+"---"+profile.displayName+"---"+profile.pictureUrl);
+      sessionStorage.setItem("LineID", profile.userId);
+      sessionStorage.setItem("LineName", profile.displayName);
+      sessionStorage.setItem("LinePicture", profile.pictureUrl);
       //sessionStorage.setItem("LineID", profile.userId);
     }
+
+  sessionStorage.setItem("LineName", vLineName);
+  sessionStorage.setItem("LinePicture", vLinePicture);
+  sessionStorage.setItem("LoginStatus", vLoginStatus);
 
 
     function openWindow() {
