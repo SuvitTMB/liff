@@ -1,7 +1,8 @@
 var vLineID = "";
 var vLineName = "";
 var vLinePicture = "";
-
+logOut();
+main();
 
 
 var firebaseConfig = {
@@ -32,7 +33,6 @@ async function main() {
     liff.login()
   }
 }
-main()
 
 
 async function getUserProfile() {
