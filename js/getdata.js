@@ -14,17 +14,18 @@ var vLinePicture = "";
 
   firebase.initializeApp(firebaseConfig);
   //firebase.analytics();
+  //var db = firebase.firestore().collection("CheckProfile");
+  //firebase.analytics();
   //var db=firebase.firestore().collection("personal")
 
 
     async function main() {
-      //alert("LINE Developers x Skooldio")
-      await liff.init({ liffId: "1655966947-5rJYErwX" })
-      document.getElementById("isLoggedIn").append(liff.isLoggedIn())
+      await liff.init({ liffId: "1655966947-5rJYErwX" });
+      document.getElementById("isLoggedIn").append(liff.isLoggedIn());
       if(liff.isLoggedIn()) {
-        getUserProfile()
+        getUserProfile();
       } else {
-        liff.login()
+        liff.login();
       }
     }
     main()
@@ -37,6 +38,7 @@ var vLinePicture = "";
       document.getElementById("displayName").append(profile.displayName)
       document.getElementById("statusMessage").append(profile.statusMessage)
       document.getElementById("decodedIDToken").append(liff.getDecodedIDToken().email)
+      alert(profile.pictureUrl);
     }
 
 
