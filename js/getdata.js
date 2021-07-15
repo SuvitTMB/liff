@@ -32,14 +32,22 @@ main()
 
 async function getUserProfile() {
   var profile = await liff.getProfile();
-  document.getElementById("pictureUrl").src = profile.pictureUrl;
-  document.getElementById("userId").append(profile.userId);
-  document.getElementById("displayName").append(profile.displayName);
-  document.getElementById("displayName1").append(profile.displayName);
+  //document.getElementById("pictureUrl").src = profile.pictureUrl;
+  //document.getElementById("userId").append(profile.userId);
+  //document.getElementById("displayName").append(profile.displayName);
+  //document.getElementById("displayName1").append(profile.displayName);
+  sessionStorage.setItem("LineID", profile.userId);
+  sessionStorage.setItem("LineName", profile.displayName);
+  sessionStorage.setItem("LinePicture", profile.pictureUrl);
   vLinePicture = profile.pictureUrl;
   vLineID = profile.userId;
   vLineName = profile.displayName;
+  $("#DisplayLineID").html(sessionStorage.getItem("LineID"));
+
+
 }
+
+
 
 
 function logOut() {
