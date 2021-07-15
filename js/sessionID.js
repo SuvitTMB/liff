@@ -2,9 +2,9 @@ var vLoginStatus = "0";
 
 if (typeof(Storage) !== "undefined") {
   // Store
-  //sessionStorage.setItem("LineID", vLineID);
-  //sessionStorage.setItem("LineName", vLineName);
-  //sessionStorage.setItem("LinePicture", vLinePicture);
+  sessionStorage.setItem("LineID", vLineID);
+  sessionStorage.setItem("LineName", vLineName);
+  sessionStorage.setItem("LinePicture", vLinePicture);
   sessionStorage.setItem("LoginStatus", vLoginStatus);
 
   sessionStorage.setItem("Survey1", "0");
