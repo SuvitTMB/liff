@@ -39,6 +39,7 @@ firebase.initializeApp(firebaseConfig);
       vLineID = profile.userId;
       vLineName = profile.displayName;
       alert(profile.userId);
+      sessionStorage.setItem("LineID", profile.userId);
     }
 
 
