@@ -27,7 +27,7 @@ firebase.initializeApp(firebaseConfig);
         liff.login();
       }
     }
-    main()
+    main();
 
 
     async function getUserProfile() {
