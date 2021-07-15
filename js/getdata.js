@@ -32,14 +32,14 @@ firebase.initializeApp(firebaseConfig);
 
     async function getUserProfile() {
       const profile = await liff.getProfile();
-      //document.getElementById("pictureUrl").src = profile.pictureUrl;
+      document.getElementById("DisplayLineID").src = profile.pictureUrl;
       //document.getElementById("userId").append(profile.userId);
       //document.getElementById("displayName").append(profile.displayName);
       vLinePicture = profile.pictureUrl;
       vLineID = profile.userId;
       vLineName = profile.displayName;
       alert(profile.userId);
-      sessionStorage.setItem("LineID", profile.userId);
+      //sessionStorage.setItem("LineID", profile.userId);
     }
 
 
