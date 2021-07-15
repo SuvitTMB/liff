@@ -46,6 +46,10 @@ async function getUserProfile() {
 	vLinePicture = profile.pictureUrl;
 }
 
+
+alert(vLineID);
+
+
 alert(vLineID);
 
 var vLoginStatus = "0";
