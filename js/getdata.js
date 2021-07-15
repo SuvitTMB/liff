@@ -39,6 +39,7 @@ var vLinePicture = "";
       document.getElementById("userId").append(profile.userId);
       document.getElementById("displayName").append(profile.displayName);
       document.getElementById("displayName1").append(profile.displayName);
+      alert(profile.pictureUrl);
       aPicture = profile.pictureUrl;
       alineID = profile.userId;
       aLinename = profile.displayName;
