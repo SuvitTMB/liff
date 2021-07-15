@@ -36,8 +36,7 @@ var vLinePicture = "";
       document.getElementById("userId").append(profile.userId)
       document.getElementById("displayName").append(profile.displayName)
       document.getElementById("statusMessage").append(profile.statusMessage)
-      document.getElementById("decodedIDToken").append(liff.getDecodedIDToken().email)
-      vLineID = profile.userId;
+      vLineID = profile.userId
     }
 
 
