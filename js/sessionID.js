@@ -16,7 +16,7 @@ if (typeof(Storage) !== "undefined") {
 
 
 
-  $("#DisplayLineID").html(sessionStorage.getItem("LineID"));
+  $("#DisplayLineID").html(vLineID);
 /*
   sessionStorage.setItem("LineID", "Ua6b6bf745bd9bfd01a180de1a05c23b3");
   sessionStorage.setItem("LineName", "Website");
