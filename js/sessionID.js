@@ -1,6 +1,5 @@
-
 var vLoginStatus = "0";
-alert(vLineID);
+
 if (typeof(Storage) !== "undefined") {
   // Store
   sessionStorage.setItem("LineID", vLineID);
