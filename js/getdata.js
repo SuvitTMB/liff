@@ -15,8 +15,6 @@ var vLinePicture = "";
   firebase.initializeApp(firebaseConfig);
   //firebase.analytics();
   var db=firebase.firestore().collection("personal")
-  Eid = "";
-  ReadData();
 
 
     async function main() {
