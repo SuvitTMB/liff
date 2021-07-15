@@ -17,27 +17,31 @@ var vLinePicture = "";
   var db=firebase.firestore().collection("personal")
 
 
+
     async function main() {
-      //alert("LINE Developers x Skooldio")
-      await liff.init({ liffId: "1655966947-5rJYErwX" })
-      document.getElementById("isLoggedIn").append(liff.isLoggedIn())
+      await liff.init({ liffId: "1655966947-5rJYErwX" });
+      document.getElementById("isLoggedIn").append(liff.isLoggedIn());
       if(liff.isLoggedIn()) {
-        getUserProfile()
+        getUserProfile();
       } else {
-        liff.login()
+        liff.login();
       }
     }
     main()
 
 
     async function getUserProfile() {
-      const profile = await liff.getProfile()
-      document.getElementById("pictureUrl").src = profile.pictureUrl
-      document.getElementById("userId").append(profile.userId)
-      document.getElementById("displayName").append(profile.displayName)
-      document.getElementById("statusMessage").append(profile.statusMessage)
-      vLineID = profile.userId
+      const profile = await liff.getProfile();
+      document.getElementById("pictureUrl").src = profile.pictureUrl;
+      document.getElementById("userId").append(profile.userId);
+      document.getElementById("displayName").append(profile.displayName);
+      document.getElementById("displayName1").append(profile.displayName);
+      vLinePicture = profile.pictureUrl;
+      vLineID = profile.userId;
+      vLineName = profile.displayName;
     }
+
+
 
 
     function logOut() {
@@ -49,11 +53,6 @@ var vLinePicture = "";
       liff.closeWindow()
     }
 
-    async function scanCode() {
-      alert("Scan QRCode")
-      const result = await liff.scanCode()
-      document.getElementById("scanCode").append(result.value)
-    }
 
     function openWindow() {
       liff.openWindow({
