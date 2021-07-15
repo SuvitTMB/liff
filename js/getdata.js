@@ -3,8 +3,6 @@ var vLineName = "";
 var vLinePicture = "";
 
 
-
-
   var firebaseConfig = {
     apiKey: "AIzaSyDfTJJ425U4OY0xac6jdhtSxDeuJ-OF-lE",
     authDomain: "retailproject-6f4fc.firebaseapp.com",
@@ -34,7 +32,6 @@ var vLinePicture = "";
     }
     main()
 
-
     async function getUserProfile() {
       const profile = await liff.getProfile();
       document.getElementById("pictureUrl").src = profile.pictureUrl;
@@ -45,9 +42,15 @@ var vLinePicture = "";
       aPicture = profile.pictureUrl;
       alineID = profile.userId;
       aLinename = profile.displayName;
-      alert(aPicture);
     }
 
+
+    function openWindow() {
+      liff.openWindow({
+        url: "https://line.me",
+        external: true     
+      })
+    }
 
 
 
