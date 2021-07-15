@@ -16,14 +16,14 @@ var vLinePicture = "";
   firebase.initializeApp(firebaseConfig);
   //firebase.analytics();
   var db = firebase.firestore().collection("CheckProfile");
-  document.getElementById('CheckLogin').style.display='block';
-  document.getElementById('CheckProfile').style.display='none';
-  document.getElementById('CheckConfirm').style.display='none';
+  //document.getElementById('CheckLogin').style.display='block';
+  //document.getElementById('CheckProfile').style.display='none';
+  //document.getElementById('CheckConfirm').style.display='none';
 
 
     async function main() {
       await liff.init({ liffId: "1655966947-5rJYErwX" });
-      document.getElementById("isLoggedIn").append(liff.isLoggedIn());
+      //document.getElementById("isLoggedIn").append(liff.isLoggedIn());
       if(liff.isLoggedIn()) {
         getUserProfile();
       } else {
