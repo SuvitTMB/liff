@@ -34,6 +34,7 @@ async function main() {
 }
 main()
 
+
 async function getUserProfile() {
 	const profile = await liff.getProfile()
 	document.getElementById("pictureUrl").src = profile.pictureUrl
@@ -41,6 +42,7 @@ async function getUserProfile() {
 	document.getElementById("displayName").append(profile.displayName)
 	document.getElementById("statusMessage").append(profile.statusMessage)
 	document.getElementById("decodedIDToken").append(liff.getDecodedIDToken().email)
+	alert(profile.userId);
 	vLineID = append(profile.userId);
 	vLineName = append(profile.displayName);
 	vLinePicture = profile.pictureUrl;
