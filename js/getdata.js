@@ -38,6 +38,7 @@ firebase.initializeApp(firebaseConfig);
       vLinePicture = profile.pictureUrl;
       vLineID = profile.userId;
       vLineName = profile.displayName;
+      alert(profile.userId);
     }
 
 
