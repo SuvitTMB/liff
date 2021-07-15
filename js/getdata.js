@@ -23,6 +23,7 @@ var vLinePicture = "";
       document.getElementById("isLoggedIn").append(liff.isLoggedIn());
       if(liff.isLoggedIn()) {
         getUserProfile();
+        alert(vLineID);
       } else {
         liff.login();
       }
