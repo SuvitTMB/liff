@@ -15,8 +15,8 @@ if (typeof(Storage) !== "undefined") {
   sessionStorage.setItem("Survey2Date", "12 กรกฎาคม 2564");
 
   //Console.log(vLinePicture);
-  //var ShowImg = '<div><img src="'+vLinePicture+'" style="width:130px;"></div>';
-  //$("#DisplayURL").html(ShowImg);
+  var ShowImg = '<div><img src="'+sessionStorage.getItem("LinePicture")+'" style="width:130px;"></div>';
+  $("#DisplayURL").html(ShowImg);
   alert(sessionStorage.getItem("LinePicture"));
 
 /*
