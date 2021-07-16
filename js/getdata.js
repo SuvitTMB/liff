@@ -59,18 +59,18 @@ async function getUserProfile() {
 }
 
 
+
 var CheckUserID = 0;
 function CheckLineID(gLineID) {
 	db.where('lineID','==',gLineID).get().then((snapshot)=> {
 	  snapshot.forEach(doc=> {
-		snapshot.forEach(doc=> {
-		var vLineID1 = doc.data().linename;
-		CheckUserID = 1;
+	    aStatusConfirm = doc.data().statusconfirm;
+	    Eid = doc.id;
+	    CheckUserID = 1;
 	  });
 	});
 	SaveProfile();
 }
-
 
 
 function SaveProfile() {
