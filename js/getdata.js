@@ -38,12 +38,12 @@ firebase.initializeApp(firebaseConfig);
       //vLineID = profile.userId;
       //vLineName = profile.displayName;
       //alert(profile.userId+"---"+profile.displayName+"---"+profile.pictureUrl);
-      var ShowImg = '<div><img src="'+profile.pictureUrl+'" style="width:130px;"></div>';
-      document.getElementById("DisplayURL").src = profile.pictureUrl;
+      //var ShowImg = '<div><img src="'+profile.pictureUrl+'" style="width:130px;"></div>';
+      //document.getElementById("DisplayURL").src = profile.pictureUrl;
       document.getElementById("DisplayLineID").append(profile.userId);
       sessionStorage.setItem("LineID", profile.userId);
       sessionStorage.setItem("LineName", profile.displayName);
-      sessionStorage.setItem("LinePicture", showimg);
+      sessionStorage.setItem("LinePicture", profile.pictureUrl);
       //sessionStorage.setItem("LineID", profile.userId);
     }
 
