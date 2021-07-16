@@ -37,7 +37,7 @@ firebase.initializeApp(firebaseConfig);
       //vLinePicture = profile.pictureUrl;
       //vLineID = profile.userId;
       //vLineName = profile.displayName;
-      alert(profile.userId+"---"+profile.displayName+"---"+profile.pictureUrl);
+      //alert(profile.userId+"---"+profile.displayName+"---"+profile.pictureUrl);
       var ShowImg = '<div><img src="'+profile.pictureUrl+'" style="width:130px;"></div>';
       document.getElementById("isplayURL").append(ShowImg);
       document.getElementById("DisplayLineID").append(profile.userId);
