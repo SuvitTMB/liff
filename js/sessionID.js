@@ -14,9 +14,10 @@ if (typeof(Storage) !== "undefined") {
   sessionStorage.setItem("Survey2Score", "ตอบถูก 5 ข้อ จาก 7 ข้อ");
   sessionStorage.setItem("Survey2Date", "12 กรกฎาคม 2564");
 
-  Console.log(vLinePicture);
-  var ShowImg = '<div><img src="'+vLinePicture+'" style="width:130px;"></div>';
-  $("#DisplayURL").html(ShowImg);
+  //Console.log(vLinePicture);
+  //var ShowImg = '<div><img src="'+vLinePicture+'" style="width:130px;"></div>';
+  //$("#DisplayURL").html(ShowImg);
+  alert(sessionStorage.getItem("LinePicture"));
 
 /*
   sessionStorage.setItem("LineID", "Ua6b6bf745bd9bfd01a180de1a05c23b3");
