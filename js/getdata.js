@@ -33,15 +33,17 @@ firebase.initializeApp(firebaseConfig);
     async function getUserProfile() {
       const profile = await liff.getProfile();
       //document.getElementById("DisplayLineID").src = profile.pictureUrl;
-      document.getElementById("DisplayLineID").append(profile.userId);
       //document.getElementById("displayName").append(profile.displayName);
       //vLinePicture = profile.pictureUrl;
       //vLineID = profile.userId;
       //vLineName = profile.displayName;
       alert(profile.userId+"---"+profile.displayName+"---"+profile.pictureUrl);
+      var ShowImg = '<div><img src="'+profile.pictureUrl+'" style="width:130px;"></div>';
+      $("#DisplayURL").html(ShowImg);
+      document.getElementById("DisplayLineID").append(profile.userId);
       sessionStorage.setItem("LineID", profile.userId);
       sessionStorage.setItem("LineName", profile.displayName);
-      sessionStorage.setItem("LinePicture", profile.pictureUrl);
+      sessionStorage.setItem("LinePicture", showimg);
       //sessionStorage.setItem("LineID", profile.userId);
     }
 
