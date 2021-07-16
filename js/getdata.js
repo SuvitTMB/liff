@@ -76,12 +76,26 @@ function CheckLineID(gLineID) {
 
 
 function check1(gLineID) {
-	db.where("lineID", "==", gLineID) {
-		alert("มีข้อมูลอยู่แล้ว");
-	} else {
-		alert("ยังไม่มีข้อมูล");
-	}
+	db.where('lineID','==',gLineID).get().then((doc) => {
+    if (doc.exists){
+      // Convert to City object
+      var city = doc.data();
+      // Use a City instance method
+      console.log(db.toString());
+	  alert("มีข้อมูลอยู่แล้ว");
+    } else {
+	  alert("ยังไม่มีข้อมูล");
+      console.log("No such document!");
+    }}).catch((error) => {
+      console.log("Error getting document:", error);
+    });
 }
+/*
+
+
+	} else {
+	});
+*/
 
 
 function SaveProfile() {
