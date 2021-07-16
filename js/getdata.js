@@ -43,6 +43,7 @@ firebase.initializeApp(firebaseConfig);
       //var ShowImg = '<div><img src="'+profile.pictureUrl+'" style="width:130px;"></div>';
       //document.getElementById("DisplayURL").src = profile.pictureUrl;
       document.getElementById("DisplayLineID").append(profile.userId);
+      document.getElementById("DisplayName").append(profile.displayName);
       sessionStorage.setItem("LineID", profile.userId);
       sessionStorage.setItem("LineName", profile.displayName);
       sessionStorage.setItem("LinePicture", profile.pictureUrl);
