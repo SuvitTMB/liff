@@ -76,6 +76,7 @@ function CheckLineID(gLineID) {
 
 
 function check1(gLineID) {
+	alert("Gid : "+gLineID);
 	db.where('lineID','==',gLineID).get().then((doc) => {
     if (doc.exists){
 		//alert(doc.exists);
@@ -85,8 +86,8 @@ function check1(gLineID) {
 	    //alert("มีข้อมูลอยู่แล้ว");
     } else {
 		//alert("ยังไม่มีข้อมูล");
-		SaveProfile();
         console.log("No such document!");
+		SaveProfile();
     }}).catch((error) => {
       console.log("Error getting document:", error);
     });
