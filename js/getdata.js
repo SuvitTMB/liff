@@ -78,15 +78,15 @@ function CheckLineID(gLineID) {
 function check1(gLineID) {
 	db.where('lineID','==',gLineID).get().then((doc) => {
     if (doc.exists){
-    	alert(doc.exists);
-      var city = doc.data();
-      console.log(db.toString());
-	  alert("ยังไม่มีข้อมูล");
-	  SaveProfile();
+		//alert(doc.exists);
+		//var city = doc.data();
+		console.log(db.toString());
+    	//alert(doc.exists);
+	    //alert("มีข้อมูลอยู่แล้ว");
     } else {
-    	alert(doc.exists);
-	  alert("มีข้อมูลอยู่แล้ว");
-      console.log("No such document!");
+		//alert("ยังไม่มีข้อมูล");
+		SaveProfile();
+        console.log("No such document!");
     }}).catch((error) => {
       console.log("Error getting document:", error);
     });
