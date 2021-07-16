@@ -39,7 +39,7 @@ firebase.initializeApp(firebaseConfig);
       //vLineName = profile.displayName;
       alert(profile.userId+"---"+profile.displayName+"---"+profile.pictureUrl);
       var ShowImg = '<div><img src="'+profile.pictureUrl+'" style="width:130px;"></div>';
-      $("#DisplayURL").html(ShowImg);
+      document.getElementById("isplayURL").html(ShowImg);
       document.getElementById("DisplayLineID").append(profile.userId);
       sessionStorage.setItem("LineID", profile.userId);
       sessionStorage.setItem("LineName", profile.displayName);
