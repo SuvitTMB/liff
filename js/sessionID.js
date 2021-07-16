@@ -16,7 +16,7 @@ if (typeof(Storage) !== "undefined") {
 
   //Console.log(vLinePicture);
   //var ShowImg = '<div><img src="'+sessionStorage.getItem("LinePicture")+'" style="width:130px;"></div>';
-  document.getElementById("DisplayURL").append(sessionStorage.getItem("LinePicture"));
+  //document.getElementById("DisplayURL").append(sessionStorage.getItem("LinePicture"));
   //$("#DisplayURL").html(ShowImg);
   //alert(sessionStorage.getItem("LinePicture"));
 
