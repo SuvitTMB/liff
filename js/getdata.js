@@ -75,16 +75,16 @@ function CheckLineID(gLineID) {
 
 function SaveProfile() {
  	var dateString = new Date().toLocaleString('en-US', { timeZone: 'Asia/Jakarta' });
-    if(aCheck==1) {
+    if(CheckUserID==1) {
 		db.doc(Eid).update({
-        lastcheckin : dateString,
+        lastcheckin : dateString
       });
     } else {
       db.add({
         lineID : vLineID,
         linename : vLineName,
         empPicture : vLinePicture,
-        lastcheckin : dateString,
+        lastcheckin : dateString
       });       
     }
 }
