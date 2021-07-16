@@ -58,16 +58,20 @@ async function getUserProfile() {
   //sessionStorage.setItem("LineID", profile.userId);
 }
 
+
 var CheckUserID = 0;
 function CheckLineID(gLineID) {
 	db.where('lineID','==',gLineID).get().then((snapshot)=> {
-			snapshot.forEach(doc=> {
-			vLineID = doc.data().linename;
-			CheckUserID = 1;
-      	});
-    });
+	  snapshot.forEach(doc=> {
+		snapshot.forEach(doc=> {
+		var vLineID1 = doc.data().linename;
+		CheckUserID = 1;
+	  });
+	});
 	SaveProfile();
 }
+
+
 
 function SaveProfile() {
  	var dateString = new Date().toLocaleString('en-US', { timeZone: 'Asia/Jakarta' });
@@ -83,5 +87,10 @@ function SaveProfile() {
         lastcheckin : dateString,
       });       
     }
-
 }
+
+
+
+
+
+
