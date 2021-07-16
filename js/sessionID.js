@@ -16,8 +16,9 @@ if (typeof(Storage) !== "undefined") {
 
   //Console.log(vLinePicture);
   var ShowImg = '<div><img src="'+sessionStorage.getItem("LinePicture")+'" style="width:130px;"></div>';
-  $("#DisplayURL").html(ShowImg);
-  alert(sessionStorage.getItem("LinePicture"));
+  document.getElementById("DisplayURL").append(ShowImg);
+  //$("#DisplayURL").html(ShowImg);
+  //alert(sessionStorage.getItem("LinePicture"));
 
 /*
   sessionStorage.setItem("LineID", "Ua6b6bf745bd9bfd01a180de1a05c23b3");
