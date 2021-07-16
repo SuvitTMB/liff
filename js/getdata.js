@@ -59,12 +59,13 @@ async function getUserProfile() {
 }
 
 var CheckUserID = 0;
-function ReadData(gLineID) {
+function CheckLineID(gLineID) {
 	db.where('lineID','==',gLineID).get().then((snapshot)=> {
-		snapshot.forEach(doc=> {
-		vLineID = doc.data().linename;
-		CheckUserID = 1;
-	});
+			snapshot.forEach(doc=> {
+			vLineID = doc.data().linename;
+			CheckUserID = 1;
+      	});
+    });
 	SaveProfile();
 }
 
