@@ -14,8 +14,8 @@ if (typeof(Storage) !== "undefined") {
   sessionStorage.setItem("Survey2Score", "ตอบถูก 5 ข้อ จาก 7 ข้อ");
   sessionStorage.setItem("Survey2Date", "12 กรกฎาคม 2564");
 
-
-  var ShowImg = '<div><img src="'+sessionStorage.getItem("LinePicture")+'" style="width:130px;"></div>';
+  Console.log(vLinePicture);
+  var ShowImg = '<div><img src="'+vLinePicture+'" style="width:130px;"></div>';
   $("#DisplayURL").html(ShowImg);
 
 /*
