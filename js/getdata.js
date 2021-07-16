@@ -66,7 +66,7 @@ function CheckLineID(gLineID) {
 	  snapshot.forEach(doc=> {
 	    var aStatusConfirm = doc.data().statusconfirm;
 	    Eid = doc.id;
-	    CheckUserID = 1;
+	    CheckUserID = 1
 	  });
 	});
 	SaveProfile();
