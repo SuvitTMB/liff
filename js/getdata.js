@@ -55,13 +55,14 @@ async function getUserProfile() {
 	sessionStorage.setItem("LineName", profile.displayName);
 	sessionStorage.setItem("LinePicture", profile.pictureUrl);
 	check1(profile.userId);
-	CheckLineID(profile.userId);
-  //sessionStorage.setItem("LineID", profile.userId);
+	//CheckLineID(profile.userId);
+    //sessionStorage.setItem("LineID", profile.userId);
 }
 
 
 
 var CheckUserID = "0";
+/*
 function CheckLineID(gLineID) {
 	db.where('lineID','==',gLineID).get().then((snapshot)=> {
 	  snapshot.forEach(doc=> {
@@ -70,21 +71,21 @@ function CheckLineID(gLineID) {
 	    CheckUserID = "1"
 	  });
 	});
-	SaveProfile();
 }
-
+*/
 
 
 function check1(gLineID) {
 	db.where('lineID','==',gLineID).get().then((doc) => {
     if (doc.exists){
-      // Convert to City object
+    	alert(doc.exists);
       var city = doc.data();
-      // Use a City instance method
       console.log(db.toString());
-	  alert("มีข้อมูลอยู่แล้ว");
-    } else {
 	  alert("ยังไม่มีข้อมูล");
+	  SaveProfile();
+    } else {
+    	alert(doc.exists);
+	  alert("มีข้อมูลอยู่แล้ว");
       console.log("No such document!");
     }}).catch((error) => {
       console.log("Error getting document:", error);
