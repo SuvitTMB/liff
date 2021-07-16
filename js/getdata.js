@@ -54,7 +54,7 @@ async function getUserProfile() {
 	sessionStorage.setItem("LineID", profile.userId);
 	sessionStorage.setItem("LineName", profile.displayName);
 	sessionStorage.setItem("LinePicture", profile.pictureUrl);
-	check1(profile.userId);
+	FindID(profile.userId);
 	//CheckLineID(profile.userId);
     //sessionStorage.setItem("LineID", profile.userId);
 }
@@ -73,6 +73,25 @@ function CheckLineID(gLineID) {
 	});
 }
 */
+
+
+function FindID(gLineID) {
+	db.where('lineID','==',gLineID).get().then(function(doc) {
+	    if (!doc.empty) {
+	    	alert("มีข้อมูลอยู่แล้ว");
+	        console.log("Document data:", doc[0].data());
+	    } else {
+			alert("ยังไม่มีข้อมูล");
+	        console.log("No such document!");
+			SaveProfile();
+	    }
+	}).catch(function(error) {
+	    console.log("Error getting document:", error);
+	});
+}
+
+
+
 
 
 function check1(gLineID) {
