@@ -54,28 +54,39 @@ async function getUserProfile() {
 	sessionStorage.setItem("LineID", profile.userId);
 	sessionStorage.setItem("LineName", profile.displayName);
 	sessionStorage.setItem("LinePicture", profile.pictureUrl);
+	check1(profile.userId);
 	CheckLineID(profile.userId);
   //sessionStorage.setItem("LineID", profile.userId);
 }
 
 
 
-var CheckUserID = 0;
+var CheckUserID = "0";
 function CheckLineID(gLineID) {
 	db.where('lineID','==',gLineID).get().then((snapshot)=> {
 	  snapshot.forEach(doc=> {
 	    var aStatusConfirm = doc.data().statusconfirm;
 	    Eid = doc.id;
-	    CheckUserID = 1
+	    CheckUserID = "1"
 	  });
 	});
 	SaveProfile();
 }
 
 
+
+function check1(gLineID) {
+	db.where("lineID", "==", gLineID) {
+		alert("มีข้อมูลอยู่แล้ว");
+	} else {
+		alert("ยังไม่มีข้อมูล");
+	}
+}
+
+
 function SaveProfile() {
  	var dateString = new Date().toLocaleString('en-US', { timeZone: 'Asia/Jakarta' });
-    if(CheckUserID==1) {
+    if(CheckUserID=="1") {
 		db.doc(Eid).update({
         lastcheckin : dateString
       });
