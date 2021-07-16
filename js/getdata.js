@@ -64,7 +64,7 @@ var CheckUserID = 0;
 function CheckLineID(gLineID) {
 	db.where('lineID','==',gLineID).get().then((snapshot)=> {
 	  snapshot.forEach(doc=> {
-	    aStatusConfirm = doc.data().statusconfirm;
+	    var aStatusConfirm = doc.data().statusconfirm;
 	    Eid = doc.id;
 	    CheckUserID = 1;
 	  });
