@@ -83,9 +83,9 @@ function check1(gLineID) {
 		//var city = doc.data();
 		console.log(db.toString());
     	//alert(doc.exists);
-	    //alert("มีข้อมูลอยู่แล้ว");
+	    alert("มีข้อมูลอยู่แล้ว");
     } else {
-		//alert("ยังไม่มีข้อมูล");
+		alert("ยังไม่มีข้อมูล");
         console.log("No such document!");
 		SaveProfile();
     }}).catch((error) => {
