@@ -1,164 +1,156 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=0,viewport-fit=cover">
-  <title>My LIFF app</title>
-  <link rel="stylesheet" href="css/style.css" media="all">
+  <!-- Theme Made By www.w3schools.com -->
+  <title>LINE Retail Society</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <!-- Google Tag Manager -->
+  <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+  new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+  j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+  'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+  })(window,document,'script','dataLayer','GTM-PW7HPDW');</script>
+  <link href="./img/favicom.ico" rel="icon">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+  <link href="https://fonts.googleapis.com/css?family=Montserrat" rel="stylesheet" type="text/css">
+  <link href="https://fonts.googleapis.com/css?family=Lato" rel="stylesheet" type="text/css">
+  <link href='css/ekachon.css' rel="stylesheet" type="text/css">
+  <link href='css/style.css' rel="stylesheet" type="text/css">
+  <link href='css/button.css' rel="stylesheet" type="text/css">
+  <!--<link href='css/add.css' rel="stylesheet" type="text/css">-->
+  <link href='css/vdo.css' rel="stylesheet" type="text/css">
+  <link href='css/w3.css' rel="stylesheet" type="text/css">
+  <!--<link href='css/w3.css' rel="stylesheet" type="text/css">-->
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+    <script src="https://static.line-scdn.net/liff/edge/versions/2.12.0/sdk.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.5.0/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.5.0/firebase-firestore.js"></script>
+  <style type="text/css">
+    .w3-container, .w3-panel {
+      padding:0px;
+    }
+  </style>
 </head>
-<body>
-  <p id="os"><b>OS:</b> </p>
-  <p id="language"><b>Language:</b> </p>
-  <p id="version"><b>Version:</b> </p>
-  <p id="isInClient"><b>isInClient:</b> </p>
-  <p id="accessToken"><b>AccessToken:</b> </p>
 
-  <img id="pictureUrl">
-  <p id="userId"><b>userId:</b> </p>
-  <p id="displayName"><b>displayName:</b> </p>
-  <p id="statusMessage"><b>statusMessage:</b> </p>
-
-  <p id="decodedIDToken"><b>email:</b> </p>
-  <p id="type"><b>type:</b> </p>
-  <p id="viewType"><b>viewType:</b> </p>
-  <p id="utouId"><b>utouId:</b> </p>
-  <p id="roomId"><b>roomId:</b> </p>
-  <p id="groupId"><b>groupId:</b> </p>
-  <p id="friendship"><b>isFriendship:</b> </p>
-  <p id="scanCode"><b>Code:</b> </p>
-  <p id="isLoggedIn"><b>isLoggedIn:</b> </p>
-  <p id="universalLink1"><b>Universal Link:</b> </p>
-  <p id="universalLink2"><b>Universal Link with Query params:</b> </p>
-  <p><a href="liff/path/?param=9">Link to Path</a></p>
-
-  <button id="btnMsg" onclick="sendMsg()">Send Message</button>
-  <button id="btnShare" onclick="shareMsg()">Share Target Picker</button>
-  <button onclick="openWindow()">Open Window</button>
-  <button id="btnScanCode" onclick="scanCode()">Scan Code</button>
-  <button id="btnLogOut" onclick="logOut()">Log Out</button>
-  <button id="btnClose" onclick="closed()">Close</button>
-
-  <script src="js/vconsole.min.js"></script>
-  <script>
-    var vConsole = new VConsole()
-    console.log("Hello World!")
-  </script>
-
-  <script src="https://static.line-scdn.net/liff/edge/versions/2.8.1/sdk.js"></script>
-  <script>
-    function createUniversalLink() {
-      const link1 = liff.permanentLink.createUrl()
-      document.getElementById("universalLink1").append(link1)
-
-      liff.permanentLink.setExtraQueryParam('param=9')
-      const link2 = liff.permanentLink.createUrl()
-      document.getElementById("universalLink2").append(link2)
+<body class="body1" id="myPage" data-spy="scroll" data-target=".navbar" data-offset="60" style="background-color: #fff;">
+  <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-PW7HPDW"
+  height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+<!--
+  <style>
+    #overlay{
+      background: #000;
+      position: fixed;
+      opacity:0.3;
+      display:none;
+      width: 100%;
+      height: 100vh;
     }
+  </style>
+-->
+  <audio id="myaudio" controls autoplay loop style="display: none;">
+    <source src="./vdo/Countdown.mp3" type="audio/mpeg">
+    <source src="./vdo/Countdown.mp3">
+  </audio>
+<!--
+  <div class="navbar1">
+    <center>
+      <div style="width:330px;">
+      <div class="iconlink" onClick="window.location='index.html';" style="background: #002d63;">
+        <div style="width:28px;"><img src="./img/survey.png" style="width:22px;"></div>
+        <div style="font-size: 11px;">หน้าแรก</div>
+      </div>
+      <div class="iconlink" onClick="window.location='showsurvey.html';">
+        <div style="width:28px;"><img src="./img/graph.png" style="width:22px;"></div>
+        <div style="font-size: 11px;">ภาพรวม</div>
+      </div>
+      <div class="iconlink" onClick="window.location='rewards.html';">
+        <div style="width:28px;"><img src="./img/gift.png" style="width:22px;"></div>
+        <div style="font-size: 11px;">รางวัล</div>
+      </div>
+      <div class="iconlink" onClick="window.location='activity.html';">
+        <div style="width:28px;"><img src="./img/rules.png" style="width:22px;"></div>
+        <div style="font-size: 11px;">กิจกรรม</div>
+      </div>
+      </div>
+    </center>
+  </div>
+-->
 
-    async function shareMsg() {
-      await liff.shareTargetPicker([
-        {
-          "type": "text",
-          "text": "ทดสอบการส่งข้อมูลจากโปรแกรม"
-        }
-      ])
-    }
+  <nav class="navbar navbar-default navbar-fixed-top">
+    <div class="container">
+      <div class="navbar-header">
+        <a class="navbar-brand" href="#myPage" onclick="location.href='index.html'" style="font-size: 12px;">LINE Retail Society</a>
+      </div>
+    </div>
+  </nav>
 
-    function logOut() {
-      liff.logout()
-      window.location.reload()
-    }
+  <main id="main">
+    <div class="container" style="text-align: center;margin:90px auto 30px auto;">
+      <div style="margin-top:40px; margin-bottom: 60px;"><img src="./img/logo@.png" style="width:100%; max-width: 250px;"></div>
+      <div id="loading" style="margin-top:20px;"><img src="./img/loading.gif"></div>
 
-    function closed() {
-      liff.closeWindow()
-    }
+<!--
+      <div id="NewSurvey" style="display: none;margin-top:10px;">
+        <div class="btn-survey1" onclick="window.location.href='registerpage.html';">คลิกเพื่อลงทะเบียน<br>ก่อนเข้าร่วมกิจกรรม</div>
+        <div style="font-size: 11px; color:#ff0000; text-align: center; padding:15px;line-height: 1.3; font-weight: 600;">ก่อนที่จะทำในขั้นตอนนี้<br>ขอให้เตรียมรูปภาพตัวเอง เป็นภาพแนวตั้ง<br>ไว้สำหรับการ Upload File ด้วยครับ</div>
+      </div>
 
-    async function scanCode() {
-      alert("Scan QRCode")
-      const result = await liff.scanCode()
-      document.getElementById("scanCode").append(result.value)
-    }
+      <div id="NewUploadFile" style="display: none;margin-top:10px;">
+        <div class="btn-survey" onclick="window.location.href='registerpage.html';">คลิกเพื่อ<br>Upload รูปภาพของคุณ</div>
+        <div style="font-size: 11px; color:#ff0000; text-align: center; padding:15px;line-height: 1.3; font-weight: 600;">ก่อนที่จะทำในขั้นตอนนี้<br>ขอให้เตรียมรูปภาพตัวเอง เป็นภาพแนวตั้ง<br>ไว้สำหรับการ Upload File ด้วยครับ</div>
+      </div>
+-->
+      <div id="OldSurvey" style="display: none;margin-top:10px;">
+        <div class="btn-survey" onclick="window.location.href='home.html';">ยินดีต้อนรับสู่เกมส์การแข่งขัน<br>BBD Champion League 2022
+          <br><br>คลิกเพื่อดูข้อมูลการแข่งขัน</div>
+      </div>
+      <div id="NoService" style="display: none;margin-top:10px;">
+        <div class="btn-t8">คุณไม่ได้รับสิทธิ์ในการเข้าถึงข้อมูลนี้<br>กรุณาบอกเราว่าคุณมีความจำเป็นอย่างไร<br>
+          <a href="mailto:suvit.cha@ttbbank.com&subject=แจ้งขอใช้งาน BBD Champion League&body=กรุณาระบุเหตุผลที่ต้องการใช้งาน ชื่อ-นามสกุล และรหัสพนักงาน" style="text-decoration: none;"><div class="btn-t2">แจ้งเหตุผลเข้าใช้ระบบงาน</div></a>
+        </div>
+      </div>
+<!--
+      <div id="CancelSurvey" style="display: none;margin-top:10px;">
+        <div class="btn-survey1" onclick="#" style="background-color: #ff0000;border:1px solid #ffffff;">คุณไม่ได้รับอนุญาต<br>ในการเข้าใช้ระบบงาน</div>
+      </div>
+ -->
+    </div>
+  </main>
 
-    function openWindow() {
-      liff.openWindow({
-        url: "https://line.me",
-        external: true     
-      })
-    }
+<!--
+  <audio id="myAudio" controls autoplay muted src="./vdo/Countdown.mp3"></audio>
+
+  <div style="height:20px;"></div>
+-->
+  <div id="id01" class="w3-modal w3-animate-opacity">
+    <div class="w3-modal-content w3-card-4" style="background: #fff;">
+      <div class="w3-container" style="width:100%;margin:auto;height: 350px;">
+        <center>
+          <div class="btn-t33" style="margin-top:20px;">Welcome to</div>
+          <div><img src="./img/Asset 1League.png" style="width:100%; max-width: 180px;margin:15px auto;"></div>
+          <div class="clr"></div>
+          <div id="overlay" class="btn-t22" onclick="CloseAll()" style="margin-top:10px; width:120px;">ปิดหน้าต่างนี้</div>
+        </center>
+      </div>
+    </div>
+    <div class="clr" style="height:50px;"></div>
+  </div>
 
 
-    async function getFriendship() {
-      const friend = await liff.getFriendship()
-      document.getElementById("friendship").append(friend.friendFlag)
-      if(!friend.friendFlag) {
-        if(confirm("คุณยังไม่เพิ่ม Bot เป็นเพื่อน จะเพิ่มเลยไหม")) {
-          Window.location = "https://line.me/R/ti/p/@YOUR-BOT-ID"
-        }
-      }
-    }
+  <footer class="container-fluid text-center">
+    <div id="isLoggedIn" style="color:#fff;"></div>
+    <a href="#myPage" title="To Top"><span class="glyphicon glyphicon-chevron-up"></span></a>
+    <div class="footer-main" style="color:#fff;">
+      @<span class="footer-font-greenn" style="color:#fff;">LINE</span> 
+      <span class="footer-font-navi" style="color:#fff;">Retail</span> 
+      <span class="footer-font-blue" style="color:#fff;">So</span><span class="footer-font-org" style="color:#fff;">ciety</span>
+    </div>
+    <!--<div class="clr" style="height: 40px;"></div>-->
+  </footer>
 
-    async function sendMsg() {
-      alert("Check Message")
-      if (liff.getContext().type !== "none" && liff.getContext().type !== "external") {
-        await liff.sendMessages([
-          {
-            "type" : "sticker",
-            "stickerID" : 1,
-            "packageId" : 1
-          }
-        ])
-        alert("Message Sent")
-      }
-    }
 
-    function getContext() {
-      //ค่าที่บอกว่าเราสนทนาตัวต่อตัวอย่าง
-      document.getElementById("type").append(liff.getContext().type)
-      document.getElementById("viewType").append(liff.getContext().viewType)
-      document.getElementById("utouId").append(liff.getContext().utouId)
-      document.getElementById("roomId").append(liff.getContext().roomId)
-      document.getElementById("groupId").append(liff.getContext().groupId)
-    }
-
-    async function getUserProfile() {
-      const profile = await liff.getProfile()
-      document.getElementById("pictureUrl").src = profile.pictureUrl
-      document.getElementById("userId").append(profile.userId)
-      document.getElementById("displayName").append(profile.displayName)
-      document.getElementById("statusMessage").append(profile.statusMessage)
-      document.getElementById("decodedIDToken").append(liff.getDecodedIDToken().email)
-    }
-
-    function getEnvironment() {
-      document.getElementById("os").append(liff.getOS())
-      document.getElementById("language").append(liff.getLanguage())
-      document.getElementById("version").append(liff.getVersion())
-      document.getElementById("accessToken").append(liff.getAccessToken())
-      document.getElementById("isInClient").append(liff.isInClient())
-      if (liff.isInClient()) {
-        document.getElementById("btnLogOut").style.display = "none"
-      } else {
-        document.getElementById("btnMsg").style.display = "none"
-        document.getElementById("btnScanCode").style.display = "none"
-        document.getElementById("btnClose").style.display = "none"
-      }
-    }
-
-    async function main() {
-      //alert("LINE Developers x Skooldio")
-      await liff.init({ liffId: "1655869884-5k4ebZo1" })
-      document.getElementById("isLoggedIn").append(liff.isLoggedIn())
-      if(liff.isLoggedIn()) {
-        getEnvironment()
-        getUserProfile()
-        getContext()
-        //getFriendship()       
-        createUniversalLink()
-      } else {
-        liff.login()
-      }
-    }
-    main()
-  </script>
+<script src="./js/index.js"></script>
 </body>
 </html>

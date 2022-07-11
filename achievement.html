@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <!-- Theme Made By www.w3schools.com -->
+  <title>LINE Retail Society</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <!-- Google Tag Manager -->
+  <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+  new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+  j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+  'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+  })(window,document,'script','dataLayer','GTM-PW7HPDW');</script>
+  <link href="./img/favicom.ico" rel="icon">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+  <link href='css/ekachon.css' rel="stylesheet" type="text/css">
+  <link href='css/style.css' rel="stylesheet" type="text/css">
+  <link href='css/button.css' rel="stylesheet" type="text/css">
+  <!--<link href='css/add.css' rel="stylesheet" type="text/css">-->
+  <link href='css/vdo.css' rel="stylesheet" type="text/css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/8.5.0/firebase-app.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/8.5.0/firebase-firestore.js"></script>
+  </style>
+</head>
+
+<body id="myPage" data-spy="scroll" data-target=".navbar" data-offset="60" style="background-color: #fff;">
+  <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-PW7HPDW"
+  height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+
+  <nav class="navbar navbar-default navbar-fixed-top">
+    <div class="container">
+      <div class="navbar-header">
+        <a class="navbar-brand" href="#myPage" onclick="location.href='index.html'" style="font-size: 12px;">LINE Retail Society</a>
+      </div>
+    </div>
+  </nav>
+
+  <main id="main">
+    <div><img src="./img/rh1.jpg" style="width:100%;margin-top:50px;max-height: 300px;"></div>
+    <div class="container">
+      <center>
+        <div style="margin:auto; width:100%; max-width: 400px;">
+          <div class="btn-t33" style="margin-top:20px;">เป้าหมายรวม เดือนกรกฎาคม 2565</div>
+          <div class="clr"></div>
+          <div id="DisplayWaittingTarget" style="display:block;">
+            <div class="text-2" style="margin:10px auto;"><img src="./img/loading.gif" style="width:20px;"><br><br>L o a d i n g</div>
+          </div>
+          <div id="DisplayTarget" style="display:none;"></div>
+<!--
+          <div class="bar_background">
+            <div style="padding-top:8px;">
+              <div class="bar_body">กรกฎาคม</div>
+              <div class="progress2" style="float: left;width:60%;margin-top:6px;"><div class="bar2" style="width:4%"></div></div>
+              <div class="bar_body1">4.55%</div>
+            </div>
+            <div class="clr"></div>
+          </div>
+-->
+
+
+          <div class="clr"></div>
+          <div style="margin:25px auto 0 auto; width:80%; max-width: 340px;">
+            <div id="1" class="box-menu4" onclick="SelectBox('A')" style="width:30%;margin-left: 5px;"><img src="./img/intro.png" class="imgBall1"><br>เป้าหมาย<br>%Achievement</div>
+            <div id="2" class="box-menu4" onclick="SelectBox('B')" style="width:30%;"><img src="./img/rewards.png" class="imgBall1"><br>เป้าหมาย<br>%Success Seller</div>
+            <div id="3" class="box-menu4" onclick="SelectBox('C')" style="width:30%;"><img src="./img/leaderboard.png" class="imgBall1"><br>เป้าหมาย<br>%Product Mix</div>
+          </div>
+          <div class="clr"></div>
+          <div class="text-44">คลิกเลือกเมนูที่ต้องการดูข้อมูล</div>
+          <div class="clr"></div>
+
+          <div id="DisplayWaitting" style="display:block;">
+            <div class="text-2" style="margin:80px auto;"><img src="./img/loading.gif" style="width:20px;"><br><br>L o a d i n g</div>
+          </div>
+          <div id="DisplayReport" style="display:none;"></div>
+
+<!--
+          <div class="btn-t33" style="margin-top:30px; background-color: #94a9b3;border: solid #94a9b3 1px;">เป้าหมาย % Achievement<br> เดือนกรกฎาคม 2565</div>
+
+
+
+
+          <div class="bar_background">
+            <div style="padding-top:8px;">
+              <div class="bar_body">RH1</div>
+              <div class="progress2" style="float: left;width:60%;margin-top:6px;"><div class="bar2" style="width:1.69%"></div></div>
+              <div class="bar_body1">1.69%</div>
+            </div>
+            <div class="clr"></div>
+          </div>
+          <div class="bar_background">
+            <div style="padding-top:8px;">
+              <div class="bar_body">RH2</div>
+              <div class="progress2" style="float: left;width:60%;margin-top:6px;"><div class="bar2" style="width:3.67%"></div></div>
+              <div class="bar_body1">3.67%</div>
+            </div>
+            <div class="clr"></div>
+          </div>
+          <div class="bar_background">
+            <div style="padding-top:8px;">
+              <div class="bar_body">RH3</div>
+              <div class="progress2" style="float: left;width:60%;margin-top:6px;"><div class="bar2" style="width:1.69%"></div></div>
+              <div class="bar_body1">1.69%</div>
+            </div>
+            <div class="clr"></div>
+          </div>
+          <div class="bar_background">
+            <div style="padding-top:8px;">
+              <div class="bar_body">RH4</div>
+              <div class="progress2" style="float: left;width:60%;margin-top:6px;"><div class="bar2" style="width:5.53%"></div></div>
+              <div class="bar_body1">5.53%</div>
+            </div>
+            <div class="clr"></div>
+          </div>
+          <div class="bar_background">
+            <div style="padding-top:8px;">
+              <div class="bar_body">RH5</div>
+              <div class="progress2" style="float: left;width:60%;margin-top:6px;"><div class="bar2" style="width:6.15%"></div></div>
+              <div class="bar_body1">6.15%</div>
+            </div>
+            <div class="clr"></div>
+          </div>
+          <div class="bar_background">
+            <div style="padding-top:8px;">
+              <div class="bar_body">RH6</div>
+              <div class="progress2" style="float: left;width:60%;margin-top:6px;"><div class="bar2" style="width:3.67%"></div></div>
+              <div class="bar_body1">3.67%</div>
+            </div>
+            <div class="clr"></div>
+          </div>
+-->
+
+
+
+          <div class="btn-t6" onclick="window.location.href='home.html';" style="margin-top:40px;">กลับหน้าแรก</div>
+        </div>
+      </center>
+    </div>
+  </main>
+
+  <footer class="container-fluid text-center">
+    <a href="#myPage" title="To Top"><span class="glyphicon glyphicon-chevron-up"></span></a>
+    <div class="footer-main">
+      @<span class="footer-font-green">LINE</span> 
+      <span class="footer-font-navi">Retail</span> 
+      <span class="footer-font-blue">So</span><span class="footer-font-org">ciety</span>
+    </div>
+  </footer>
+  <script src="./js/achievement.js"></script>
+
+</body>
+</html>
