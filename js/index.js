@@ -1,12 +1,11 @@
-var dateString = new Date().toLocaleString('en-US', { timeZone: 'Asia/Jakarta' });
-var CheckFoundData = 0;
+var i = 0;
+var EidProfile = "";
+var dateString = "";
+
 
 $(document).ready(function () {
-  //if(sessionStorage.getItem("News")==null) {
-  //  document.getElementById('id01').style.display='block';
-  //}
-  /*
-  sessionStorage.clear();
+/*
+  sessionStorage.clear(); 
   var str = "";
   var sLineID = "Ua6b6bf745bd9bfd01a180de1a05c23b3";
   var sLineName = "Website";
@@ -18,13 +17,14 @@ $(document).ready(function () {
   str += '<div class="NameLine">'+ sessionStorage.getItem("LineName")+'</div>';
   $("#MyProfile").html(str);  
   Connect_DB();
-  */
-
+*/   
   main();
 });
 
+
+
 async function main() {
-  await liff.init({ liffId: "1655966947-pXxo14r9" });
+  await liff.init({ liffId: "1657509542-KGPDLak7" });
   document.getElementById("isLoggedIn").append(liff.isLoggedIn());
   if(liff.isLoggedIn()) {
     getUserProfile();
@@ -60,94 +60,176 @@ function Connect_DB() {
     apiKey: "AIzaSyDfTJJ425U4OY0xac6jdhtSxDeuJ-OF-lE",
     authDomain: "retailproject-6f4fc.firebaseapp.com",
     projectId: "retailproject-6f4fc",
-    databaseURL: "https://file-upload-6f4fc.firebaseio.com",
     storageBucket: "retailproject-6f4fc.appspot.com",
     messagingSenderId: "653667385625",
     appId: "1:653667385625:web:a5aed08500de80839f0588",
     measurementId: "G-9SKTRHHSW9"
   };
   firebase.initializeApp(firebaseConfig);
-  dbCheckProfile = firebase.firestore().collection("CheckProfile");
-  //dbSongkarn = firebase.firestore().collection("Songkarn");
-  //sessionStorage.setItem("News", "Songkarn");
+  dbProfile = firebase.firestore().collection("CheckProfile");
+  dbttbMember = firebase.firestore().collection("ttbMember");
+  dbttbnewsLog = firebase.firestore().collection("ttbnewsLog");
   CheckData();
 }
 
 
-
+var CheckFoundData = 0;
 function CheckData() {
-  dbCheckProfile.where('lineID','==',sessionStorage.getItem("LineID"))
+  dbProfile.where('lineID','==',sessionStorage.getItem("LineID"))
   .get().then((snapshot)=> {
     snapshot.forEach(doc=> {
-      CheckFoundData = doc.data().statusconfirm;
+      CheckFoundData = 1;
       if(doc.data().statusconfirm==1) {
-	      sessionStorage.setItem("EmpID", doc.data().empID);
-	      sessionStorage.setItem("EmpName", doc.data().empName);
-	      alert(sessionStorage.getItem("EmpID"));
-        //ShowIMG();
-        //location.href = "index.html";
+        EidProfile = doc.id;
+        sessionStorage.setItem("EmpID_Society", doc.data().empID);
+        sessionStorage.setItem("EmpName_Society", doc.data().empName);
+        sessionStorage.setItem("EmpPhone_Society", doc.data().empPhone);
+        CheckMember();
+      } else if(doc.data().statusconfirm==2) { 
+        location.href = "waitingpage.html";
+        //location.href = "https://liff.line.me/1655966947-KxrAqdyp";
       } else {
-        location.href = "https://liff.line.me/1655966947-KxrAqdyp";
+        location.href = "cancelpage.html";
       }
     });
     if(CheckFoundData==0) {
-      location.href = "https://liff.line.me/1655966947-KxrAqdyp";
+      location.href = "registerpage.html";
+      //location.href = "https://liff.line.me/1655966947-KxrAqdyp"; 
     }
   });
 }
 
-/*
-function ShowIMG() {
-  var str = "";
-  str += '<div class="grid">';
-  dbSongkarn.orderBy('TimeStampDate','desc')
-  .limit(8)
+
+var EidUpdateLogin = "";
+var CountLogin = 0;
+var CheckFound = 0;
+function CheckMember() {
+  dbttbMember.where('LineID','==',sessionStorage.getItem("LineID"))
+  .limit(1)
   .get().then((snapshot)=> {
     snapshot.forEach(doc=> {
-      str += '<figure class="effect-zoe" onclick="viewpage(\''+ doc.id +'\')">';
-      str += '<img src="'+doc.data().SendImg+'"/>';
-      str += '<figcaption><div style="font-weight: 600;font-size:11px;">'+doc.data().EmpName+'</div>';
-      str += '</figcaption></figure>';
+      CheckFound = 1;
+      UpdatePorfile();
+      sessionStorage.setItem("RefID_Member", doc.id);
+      sessionStorage.setItem("Level_Point", doc.data().Level_Point);
+      sessionStorage.setItem("XP_Point", doc.data().XP_Point);
+      sessionStorage.setItem("RP_Point", doc.data().RP_Point);
+      document.getElementById('loading').style.display='none';
+      document.getElementById('OldSurvey').style.display='block';
     });
-    str += '</div>';
-    $("#DisplayImg").html(str);
+
+    if(CheckFound==0) {
+      AddNewMember();
+      document.getElementById('loading').style.display='none';
+      document.getElementById('OldSurvey').style.display='block';
+      //document.getElementById('NoService').style.display='block';
+    }
   });
 }
-*/
 
-function ClipVDO(Clip) {
-  var str = "";
-  var sVDO = "";
-  if(Clip==1) {
-    sVDO = "https://firebasestorage.googleapis.com/v0/b/retailproject-6f4fc.appspot.com/o/APEclip%2FRH-1.mp4?alt=media&token=ec69964c-a5aa-4b15-959c-dfe3ce53ae80";
-  } else if(Clip==2) { 
-    sVDO = "https://firebasestorage.googleapis.com/v0/b/retailproject-6f4fc.appspot.com/o/APEclip%2FRH-2.mp4?alt=media&token=787a2cc0-8df6-4ed1-85bb-4fa771a198dd";
-  } else if(Clip==3) { 
-    sVDO = "https://firebasestorage.googleapis.com/v0/b/retailproject-6f4fc.appspot.com/o/APEclip%2FRH-3.mp4?alt=media&token=b9a7dfea-53a5-4f65-be55-956d7a5d54b7";
-  } else if(Clip==4) { 
-    sVDO = "https://firebasestorage.googleapis.com/v0/b/retailproject-6f4fc.appspot.com/o/APEclip%2FRH-4.mp4?alt=media&token=26375e0e-8921-4edd-8d64-405d6110f600";
-  } else if(Clip==5) { 
-    sVDO = "https://firebasestorage.googleapis.com/v0/b/retailproject-6f4fc.appspot.com/o/APEclip%2FRH-5.mp4?alt=media&token=8aa41517-93b2-48be-ae0e-d73d611f835a";
-  } else if(Clip==6) { 
-    sVDO = "https://firebasestorage.googleapis.com/v0/b/retailproject-6f4fc.appspot.com/o/APEclip%2FRH-6.mp4?alt=media&token=86d6c572-bc0d-4129-9dbf-1b8f0587833a";
-  }
-  //alert(Clip);
-  str += '<div><div style="padding:20px 0;color:#f68b1f; font-weight:600; text-align:center;">APE CHEER UP<br><font color="#0056ff">Branch Banking Regional Office '+Clip+' - RH'+Clip+'</font>';
-  str += '<br><font color="#000000">..... มาร่วมลุ้นเป้าหมายกัน .....</font></div>';
-  str += '<video id="video" width="95%" controls="controls" autoplay>';
-  //str += '<source src="https://retailsociety-33ea6.web.app/line/vdo/ttb_logo_story.mp4" type="video/mp4">';
-  str += '<source src="'+sVDO+'" type="video/mp4">';
-  str += '</video></div><div style="padding:20px;color:#666; text-align:left;font-size:11px;line-height:1.4;">รวมเพื่อนๆ ในสาขามาถ่ายคลิปวิดีโอสั้นๆ บูมเชียร์เป้า APE ของ RH ตัวเอง พร้อมท่าทางประกอบ ความยาวไม่เกิน 1 นาที เช่น “ RH 1 APE xxx ล้าน ต้องสู้! ต้องสู้! ต้องสู้! ”</div>';
-  $("#DisplayClipVDO").html(str);
 
+function UpdatePorfile() {
+    dbProfile.doc(EidProfile).update({
+      empPicture : sessionStorage.getItem("LinePicture"),
+      linename : sessionStorage.getItem("LineName")
+    });
+}
+
+
+function AddNewMember() {
+  NewDate();
+  var TimeStampDate = Math.round(Date.now() / 1000);
+  var newPoint = [5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15];
+  var NewScore = random_item(newPoint);
+  dbttbMember.add({
+    LineID : sessionStorage.getItem("LineID"),
+    LineName : sessionStorage.getItem("LineName"),
+    LinePicture : sessionStorage.getItem("LinePicture"),
+    EmpID : sessionStorage.getItem("EmpID_Society"),
+    EmpName : sessionStorage.getItem("EmpName_Society"),
+    Level_Point : 1,
+    XP_Point : parseFloat(NewScore),
+    RP_Point : parseFloat(NewScore),
+    LogDateTime : dateString,
+    LogTimeStamp : TimeStampDate
+  });
+  sessionStorage.setItem("Level_Point", 1);
+  sessionStorage.setItem("XP_Point", parseFloat(NewScore));
+  sessionStorage.setItem("RP_Point", parseFloat(NewScore));
+
+  dbttbnewsLog.add({
+    LineID : sessionStorage.getItem("LineID"),
+    LineName : sessionStorage.getItem("LineName"),
+    LinePicture : sessionStorage.getItem("LinePicture"),
+    EmpID : sessionStorage.getItem("EmpID_Society"),
+    EmpName : sessionStorage.getItem("EmpName_Society"),
+    RefID : "",
+    NewsGroup : 0,
+    HeadNews : "ลงทะเบียน",
+    SubNews : "เข้าใช้ระบบงานครั้งแรก",
+    GetPoint : parseFloat(NewScore),
+    LastPoint : parseFloat(sessionStorage.getItem("XP_Point")),
+    LogDate : dateString,
+    LogTimeStamp : TimeStampDate
+  });
   document.getElementById('id01').style.display='block';
 }
 
 
+function WelcomePoint() {
+  document.getElementById('id01').style.display='none';
+  document.getElementById('id02').style.display='block';
+  var str = "";
+      str += '<div><img src="'+ sessionStorage.getItem("LinePicture") +'" class="Profile-img" style="margin-top:35px;width:120px;height:120px;"></div>';
+      str += '<div class="Profile-title" style="color:#f68b1f; font-weight:600;text-align:center;">'+ sessionStorage.getItem("LineName")+'</div>';
+      str += '<div class="btn-t3" style="margin:15px auto;">คุณได้รับ <b>Welcome Point</b></div><div class="XPpoint" style="margin-top:-10px;">'+ sessionStorage.getItem("XP_Point")+' Point</div>';
+      str += '<div style="margin-top:15px;"><img src="./img/welcome.gif" style="width:100%; max-width: 200px;"></div>';
+      str += '<div class="clr"></div>';
+      str += '<div class="btn-t2" onclick="GotoWeb()" style="margin-top:15px;">เข้าสู่ <b>LINE Retail Society</b></div>';
+      str += '<div class="clr" style="height:40px;"></div>';
+    $("#DisplayWelcomePoint").html(str);  
+}
+
+
+function NewDate() {
+  var today = new Date();
+  var day = today.getDate() + "";
+  var month = (today.getMonth() + 1) + "";
+  var year = today.getFullYear() + "";
+  var hour = today.getHours() + "";
+  var minutes = today.getMinutes() + "";
+  var seconds = today.getSeconds() + "";
+  var ampm = hour >= 12 ? 'PM' : 'AM';
+  day = checkZero(day);
+  month = checkZero(month);
+  year = checkZero(year);
+  hour = checkZero(hour);
+  minutes = checkZero(minutes);
+  seconds = checkZero(seconds);
+  dateString = day + "/" + month + "/" + year + " " + hour + ":" + minutes + ":" + seconds +" "+ ampm;
+}
+
+
+function checkZero(data){
+  if(data.length == 1){
+    data = "0" + data;
+  }
+  return data;
+}
+
+
+function GotoWeb() {
+  window.location.href = 'home.html';
+}
+
+
+function random_item(items) {
+  return items[Math.floor(Math.random()*items.length)];   
+}
+
 
 function CloseAll() {
-  var video = document.querySelector("#video");
-  video.pause();
-  video.currentTime = 0;
   document.getElementById('id01').style.display='none';
+  document.getElementById('id02').style.display='none';
 }
+
